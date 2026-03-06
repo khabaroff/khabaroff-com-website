@@ -1,31 +1,16 @@
 {
-  "name": "astro-temp",
+  "name": "khabaroff-blog",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "tinacms dev -c \"astro dev --port 4444\"",
-    "dev:site": "astro dev --port 4444",
+    "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "tinacms": "tinacms dev",
-    "cms": "npm run dev"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
-    "@astrojs/react": "^4.4.2",
-    "@tinacms/cli": "^2.1.1",
-    "@types/react": "^19.2.9",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.15",
-    "astro-posthog": "^1.0.2",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "tinacms": "^3.3.1"
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.1.18",
-    "concurrently": "^9.2.1",
-    "tailwindcss": "^4.1.18"
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.16.15"
   }
 }

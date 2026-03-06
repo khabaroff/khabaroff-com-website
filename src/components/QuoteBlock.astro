@@ -1,0 +1,86 @@
+---
+interface Props {
+  quote: string;
+  author?: string;
+  source?: string;
+  type?: 'default' | 'large' | 'pullout';
+}
+
+const { quote, author, source, type = 'default' } = Astro.props;
+---
+
+<blockquote class:list={['quote-block', `quote-block--${type}`]}>
+  <p class="quote-text">&laquo;{quote}&raquo;</p>
+  {(author || source) && (
+    <footer class="quote-footer">
+      {author && <cite class="quote-author">{author}</cite>}
+      {author && source && <span class="quote-sep">&mdash;</span>}
+      {source && <span class="quote-source">{source}</span>}
+    </footer>
+  )}
+</blockquote>
+
+<style>
+  .quote-block {
+    margin: 24px 0;
+  }
+  .quote-block--default {
+    border-left: 4px solid var(--color-accent-green);
+    padding: 16px 24px;
+    background: var(--color-background);
+    border-radius: 0 4px 4px 0;
+  }
+  .quote-block--large {
+    border-left: 4px solid var(--color-primary);
+    padding: 24px 32px;
+    background: var(--color-background-alt);
+    border-radius: 0 4px 4px 0;
+  }
+  .quote-block--pullout {
+    text-align: center;
+    padding: 32px 0;
+    margin: 48px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .quote-block--default .quote-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+  }
+  .quote-block--large .quote-text {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  .quote-block--pullout .quote-text {
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--color-text);
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+  @media (min-width: 768px) {
+    .quote-block--pullout .quote-text {
+      font-size: 30px;
+    }
+  }
+  .quote-text {
+    margin-bottom: 16px;
+  }
+  .quote-footer {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+  .quote-author {
+    font-weight: 500;
+    font-style: normal;
+  }
+  .quote-sep {
+    margin: 0 8px;
+  }
+  .quote-source {
+    font-style: italic;
+  }
+</style>

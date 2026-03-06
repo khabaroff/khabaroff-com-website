@@ -2,404 +2,777 @@
 import Layout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout title="Сергей Хабаров - практик-преподаватель">
-    <!-- Header -->
-    <header class="bg-white">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-5 flex items-center justify-between flex-wrap gap-4">
-            <div class="font-medium text-xl md:text-2xl text-black" style="font-family: 'Lora', serif">Сергей Хабаров</div>
-            <nav class="flex items-center gap-6 md:gap-10 flex-wrap">
-                <a href="#delayu" class="text-[#888888] text-[13px] hover:text-black transition-colors">Делаю</a>
-                <a href="#pishu" class="text-[#888888] text-[13px] hover:text-black transition-colors">Пишу</a>
-                <a href="#about" class="text-[#888888] text-[13px] hover:text-black transition-colors">Обо мне</a>
-                <a href="#contact" class="bg-[--color-primary] text-white text-[13px] font-medium px-6 py-2.5 rounded-3xl hover:opacity-90 transition-opacity">Написать</a>
-            </nav>
+<Layout title="Сергей Хабаров — практик-преподаватель">
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Сергей Хабаров</div>
+      <nav class="nav">
+        <a href="#delayu" class="nav-link">Делаю</a>
+        <a href="#pishu" class="nav-link">Пишу</a>
+        <a href="#about" class="nav-link">Обо мне</a>
+        <a href="#contact" class="nav-cta">Написать</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <p class="section-label">00 · практик-преподаватель</p>
+        <h1 class="hero-title">
+          Изучаю проблемы,<br>
+          которые возникают<br>
+          у людей с технологиями
+        </h1>
+        <p class="hero-subtitle">и у технологий с людьми</p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-number">2000+</div>
+            <div class="stat-label">часов преподавания<br>и консалтинга</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">публичных воркшопов<br>и выступлений</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">лет на стыке<br>AI и образования</div>
+          </div>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="bg-white">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-20 lg:py-25 flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-15 items-start">
-            <div class="flex-1 flex flex-col gap-8">
-                <p class="text-[#888888] text-[13px] font-medium">00 · практик-преподаватель</p>
-                <h1 class="font-medium text-4xl md:text-5xl lg:text-[64px] leading-[1.1] text-black">
-                    Изучаю проблемы,<br>
-                    которые возникают<br>
-                    у людей с технологиями
-                </h1>
-                <p class="font-lora text-xl md:text-2xl text-[#666666] leading-[1.5]">
-                    и у технологий с людьми
-                </p>
-
-                <!-- Stats Row -->
-                <div class="flex gap-8 md:gap-16 pt-8 md:pt-12 flex-wrap">
-                    <div class="flex flex-col gap-1">
-                        <div class="font-lora text-3xl md:text-5xl font-medium text-black">2000+</div>
-                        <div class="text-[#666666] text-[13px] leading-[1.5]">часов преподавания<br>и консалтинга</div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <div class="font-lora text-3xl md:text-5xl font-medium text-black">50+</div>
-                        <div class="text-[#666666] text-[13px] leading-[1.5]">публичных воркшопов<br>и выступлений</div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <div class="font-lora text-3xl md:text-5xl font-medium text-black">6+</div>
-                        <div class="text-[#666666] text-[13px] leading-[1.5]">лет на стыке<br>AI и образования</div>
-                    </div>
-                </div>
-
-                <!-- CTA Buttons -->
-                <div class="flex gap-4 pt-8 flex-wrap">
-                    <a href="#contact" class="bg-[--color-primary] text-white text-[13px] font-medium px-8 py-4 rounded-[28px] hover:opacity-90 transition-opacity">
-                        → Написать
-                    </a>
-                    <a href="#about" class="border border-black text-black text-[13px] px-9 py-[18px] rounded-[28px] hover:bg-black hover:text-white transition-colors">
-                        Подробнее ↓
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hero Image -->
-            <div class="w-full lg:w-[400px] h-[300px] md:h-[400px] rounded-lg overflow-hidden flex-shrink-0">
-                <img src="/public/images/me.jpg"
-                     alt="Hero"
-                     class="w-full h-full object-cover">
-            </div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">→ Написать</a>
+          <a href="#about" class="btn-outline">Подробнее ↓</a>
         </div>
-    </section>
+      </div>
 
-    <!-- Делаю Section -->
-    <section id="delayu" class="bg-[#FAFAFA]">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
-            <div class="flex flex-col gap-8 md:gap-12">
-                <div class="flex flex-col gap-4">
-                    <p class="text-[#888888] text-[13px] font-medium">01 · чем занимаюсь</p>
-                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-black">Делаю</h2>
-                </div>
+      <div class="hero-image">
+        <img src="/images/me.jpg" alt="Сергей Хабаров" />
+      </div>
+    </div>
+  </section>
 
-                <div class="flex flex-col gap-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Project 1 -->
-                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
-                            <div class="flex flex-col gap-2">
-                                <h3 class="font-lora text-2xl font-medium text-black">Khabaroff.Studio</h3>
-                                <p class="text-[#666666] text-lg leading-relaxed">Основатель венчурной студии. Создаём AI-решения для старта бизнеса — от чат-ботов до сложных систем автоматизации.</p>
-                            </div>
-                            <a href="https://khabaroff.studio" class="text-black font-medium text-[13px] hover:opacity-70">→ khabaroff.studio</a>
-                        </div>
+  <!-- Делаю Section -->
+  <section id="delayu" class="section section--alt">
+    <div class="container">
+      <p class="section-label">01 · чем занимаюсь</p>
+      <h2 class="section-title">Делаю</h2>
 
-                        <!-- Project 2 -->
-                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
-                            <div class="flex flex-col gap-2">
-                                <h3 class="font-lora text-2xl font-medium text-black">AI Mindset Lab и ИИЧАВО</h3>
-                                <p class="text-[#666666] text-lg leading-relaxed">Образовательный лид. Помогаю участникам лабораторий и буткемпов внедрять ИИ-инструменты в личные и рабочие процессы.</p>
-                            </div>
-                            <a href="https://aimindset.org" class="text-black font-medium text-[13px] hover:opacity-70">→ aimindset.org</a>
-                        </div>
-
-                        <!-- Project 3 -->
-                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
-                            <div class="flex flex-col gap-2">
-                                <h3 class="font-lora text-2xl font-medium text-black">Prepod.am</h3>
-                                <p class="text-[#666666] text-lg leading-relaxed">Основатель ИИ-стартапа. Генератор академических репортов, который экономит преподавателям часы на отчётности.</p>
-                            </div>
-                            <a href="https://prepod.am" class="text-black font-medium text-[13px] hover:opacity-70">→ prepod.am</a>
-                        </div>
-
-                        <!-- Project 4 -->
-                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
-                            <div class="flex flex-col gap-2">
-                                <h3 class="font-lora text-2xl font-medium text-black">PLAI</h3>
-                                <p class="text-[#666666] text-lg leading-relaxed">Операционный лид. Разрабатываем AI-игрушку для детей, которая адаптируется под каждого ребёнка.</p>
-                            </div>
-                            <a href="https://plaicube.ai" class="text-black font-medium text-[13px] hover:opacity-70">→ plaicube.ai</a>
-                        </div>
-                    </div>
-
-                    <a href="#" class="text-black font-semibold text-lg hover:opacity-70 transition-opacity">→ Все проекты и портфолио</a>
-                </div>
-            </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-body">
+            <h3 class="project-name">Khabaroff.Studio</h3>
+            <p class="project-desc">Основатель венчурной студии. Создаём AI-решения для старта бизнеса — от чат-ботов до сложных систем автоматизации.</p>
+          </div>
+          <a href="https://khabaroff.studio" class="project-link">→ khabaroff.studio</a>
         </div>
-    </section>
 
-    <!-- Пишу Section -->
-    <section id="pishu" class="bg-white">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
-            <div class="flex flex-col gap-8 md:gap-12">
-                <div class="flex flex-col gap-4">
-                    <p class="text-[#888888] text-[13px] font-medium">02 · думаю вслух</p>
-                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-black">Пишу</h2>
-                </div>
-
-                <!-- Writing Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 min-h-[300px] md:min-h-[450px]">
-                    <div class="border-2 border-[--color-accent-yellow] rounded-2xl p-6 flex flex-col justify-between gap-3 bg-white">
-                        <div class="flex flex-col gap-3">
-                            <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Книга «Процессная целостность»</h3>
-                            <p class="text-[#666666] text-lg leading-relaxed">Если бы я как критик делал описание книги, то я бы сказал: «Автор книги — живое воплощение идеи непрерывного развития и адаптации». Книга похожа на лонгитюдное наблюдение за персонажем, который через жизненные ситуации копает в самопознание, профессиональный рост и личностное развитие.</p>
-                        </div>
-                        <a href="#" class="text-black font-medium text-[13px] hover:opacity-70">→ Читать</a>
-                    </div>
-
-                    <div class="border border-[--color-accent-green] rounded-2xl p-6 flex flex-col justify-between gap-3 bg-white">
-                        <div class="flex flex-col gap-3">
-                            <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Рассылка «Постпроцессная целостность»</h3>
-                            <p class="text-[#666666] text-lg leading-relaxed">Наблюдения, рефлексии и самоанализ. Построение моделей, полезные находки и советы по использованию различных тулов. Обсуждение обучения и образования для себя и других.</p>
-                        </div>
-                        <a href="https://khabaroff.substack.com" class="text-black font-medium text-[13px] hover:opacity-70">→ khabaroff.substack.com</a>
-                    </div>
-
-                    <div class="border border-[--color-accent-green] rounded-2xl p-6 flex flex-col justify-between gap-3 bg-white">
-                        <div class="flex flex-col gap-3">
-                            <h3 class="font-lora text-2xl font-medium text-black">Telegram-канал</h3>
-                            <p class="text-[#666666] text-lg leading-relaxed">All I Know Is That I Don't Know Nothing — канал о развитии детей и взрослых. Название канала содержит ошибку. В этом красота формы, которая подтверждает содержание.</p>
-                        </div>
-                        <a href="#" class="text-black font-medium text-[13px] hover:opacity-70">→ Подписаться</a>
-                    </div>
-                </div>
-
-                <!-- Blog Section -->
-                <div class="border-t border-[#E5E5E5] pt-8 md:pt-12 flex flex-col gap-8">
-                    <div class="flex flex-col gap-2">
-                        <h3 class="font-lora text-2xl font-medium text-black">Блог</h3>
-                        <p class="text-[#666666] text-lg leading-[1.5]">Лонгриды на сайте — о системах, мышлении и работе.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                        <div class="flex flex-col gap-8">
-                            <h4 class="font-lora text-2xl font-medium text-black">Последние</h4>
-                            <div class="flex flex-col gap-5">
-                                <div class="flex flex-col gap-1">
-                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Новый пост о системах</a>
-                                    <p class="text-[#888888] text-[13px] leading-relaxed">Как выстроить процессы, чтобы они работали без вас</p>
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Заметки о продуктивности</a>
-                                    <p class="text-[#888888] text-[13px] leading-relaxed">Почему GTD не работает и что делать вместо него</p>
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Мысли об образовании</a>
-                                    <p class="text-[#888888] text-[13px] leading-relaxed">Чему нас не учат в школе, но должны бы</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-8">
-                            <h4 class="font-lora text-2xl font-medium text-black">Избранные</h4>
-                            <div class="flex flex-col gap-5">
-                                <div class="flex flex-col gap-1">
-                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Гид по философии Roam Research</a>
-                                    <p class="text-[#888888] text-[13px] leading-relaxed">Обзор приложения и принципов, которые за ним стоят — в двухчасовом видеообзоре</p>
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ «Думай как математик» — как научиться учиться</a>
-                                    <p class="text-[#888888] text-[13px] leading-relaxed">10 ключевых идей книги «Думай как математик. Как решать любые задачи быстрее»</p>
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Дерек Сиверс о смысле жизни</a>
-                                    <p class="text-[#888888] text-[13px] leading-relaxed">Давайте побудем немного наивными и забудем, что решения нет</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3 class="project-name">AI Mindset Lab и ИИЧАВО</h3>
+            <p class="project-desc">Образовательный лид. Помогаю участникам лабораторий и буткемпов внедрять ИИ-инструменты в личные и рабочие процессы.</p>
+          </div>
+          <a href="https://aimindset.org" class="project-link">→ aimindset.org</a>
         </div>
-    </section>
 
-    <!-- Обо мне Section -->
-    <section id="about" class="bg-[#FAFAFA]">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
-            <div class="flex flex-col gap-6">
-                <p class="text-[#888888] text-[13px] font-medium">03 · путь</p>
-                <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-black">Обо мне</h2>
-                <p class="text-[#666666] text-base md:text-lg leading-[1.7] max-w-[700px]">
-                    За карьеру я поработал в разных индустриях — EdTech, маркетинг, медиа, HORECA, разработка — и попробовал себя в нескольких ролях, от CTO до директора по развитию.<br><br>
-                    Это дало мне навык быстро разбираться в новом и строить системы там, где их не было. Сейчас я соединяю весь этот опыт: строю системы, учу команды и пишу о том, как это работает.
-                </p>
-                <a href="#" class="text-black font-semibold text-lg hover:opacity-70 transition-opacity">→ Полная история (устанете скроллить)</a>
-            </div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3 class="project-name">Prepod.am</h3>
+            <p class="project-desc">Основатель ИИ-стартапа. Генератор академических репортов, который экономит преподавателям часы на отчётности.</p>
+          </div>
+          <a href="https://prepod.am" class="project-link">→ prepod.am</a>
         </div>
-    </section>
 
-    <!-- Форматы Section -->
-    <section class="bg-white">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
-            <div class="flex flex-col gap-8 md:gap-12">
-                <div class="flex flex-col gap-4">
-                    <p class="text-[#888888] text-[13px] font-medium">04 · форматы</p>
-                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-black">Как со мной работать</h2>
-                    <p class="text-[#666666] text-lg leading-relaxed">Есть несколько способов поработать вместе.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Card 1 -->
-                    <div class="border border-[#E5E5E5] rounded-[20px] p-8 flex flex-col items-center gap-4 text-center">
-                        <div class="w-14 h-14 rounded-[28px] bg-[#2F476020] flex items-center justify-center">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[--color-primary]">
-                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Диагностика</h3>
-                        <p class="text-[#666666] text-base md:text-lg leading-relaxed">
-                            Разбираю процессы и показываю, где утекает время, деньги и внимание. На выходе — карта: что автоматизировать, что оставить. Дальше можете сами или идём вместе.
-                        </p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="border border-[#E5E5E5] rounded-[20px] p-8 flex flex-col items-center gap-4 text-center">
-                        <div class="w-14 h-14 rounded-[28px] bg-[#A6BDA320] flex items-center justify-center">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[--color-accent-green]">
-                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Моделирование процессов</h3>
-                        <p class="text-[#666666] text-base md:text-lg leading-relaxed">
-                            Беру один процесс и прорабатываю его до деталей: что, как, кто делает. На выходе — готовая схема для внедрения.
-                        </p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="border border-[#E5E5E5] rounded-[20px] p-8 flex flex-col items-center gap-4 text-center">
-                        <div class="w-14 h-14 rounded-[28px] bg-[#F7D17420] flex items-center justify-center">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[--color-accent-yellow]">
-                                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Внедрение</h3>
-                        <p class="text-[#666666] text-base md:text-lg leading-relaxed">
-                            Настраиваю, тестирую, запускаю. Обучаю команду на их реальных задачах и остаюсь на связи 30 дней после старта.
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3 class="project-name">PLAI</h3>
+            <p class="project-desc">Операционный лид. Разрабатываем AI-игрушку для детей, которая адаптируется под каждого ребёнка.</p>
+          </div>
+          <a href="https://plaicube.ai" class="project-link">→ plaicube.ai</a>
         </div>
-    </section>
+      </div>
 
-    <!-- Отзывы Section -->
-    <section class="bg-[#FAFAFA] overflow-hidden">
-        <div class="max-w-[1440px] mx-auto py-12 md:py-16 lg:py-20">
-            <div class="flex flex-col items-center gap-8 md:gap-12">
-                <div class="flex flex-col gap-4 px-4 md:px-8 lg:px-30 w-full">
-                    <p class="text-[#888888] text-[13px] font-medium">05 · говорят</p>
-                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl text-black">Отзывы</h2>
-                </div>
+      <a href="#" class="more-link">→ Все проекты и портфолио</a>
+    </div>
+  </section>
 
-                <div class="flex gap-8 justify-center px-4 overflow-x-auto pb-4 w-full">
-                    <div class="border border-[#E5E5E5] rounded-2xl p-8 flex flex-col gap-6 min-w-[320px] md:w-[400px] opacity-50">
-                        <p class="text-[#1A1A1A] text-lg leading-relaxed">
-                            «Сергей видит систему там, где я вижу хаос. За месяц разложил процессы, которые мы не могли починить год.»
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-[#E5E5E5]"></div>
-                            <div>
-                                <p class="font-medium text-[#1A1A1A] text-[13px]">Имя Фамилия</p>
-                                <p class="text-[#888888] text-[13px]">директор по операциям, компания</p>
-                            </div>
-                        </div>
-                    </div>
+  <!-- Пишу Section -->
+  <section id="pishu" class="section">
+    <div class="container">
+      <p class="section-label">02 · думаю вслух</p>
+      <h2 class="section-title">Пишу</h2>
 
-                    <div class="border-2 border-[--color-accent-green] rounded-2xl p-8 flex flex-col gap-6 min-w-[320px] md:w-[400px]">
-                        <p class="text-[#1A1A1A] text-lg leading-relaxed">
-                            «Не просто рассказал про AI — показал, как внедрить так, чтобы команда реально пользовалась.»
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-[#E5E5E5]"></div>
-                            <div>
-                                <p class="font-medium text-[#1A1A1A] text-[13px]">Имя Фамилия</p>
-                                <p class="text-[#888888] text-[13px]">руководитель отдела, компания</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="border border-[#E5E5E5] rounded-2xl p-8 flex flex-col gap-6 min-w-[320px] md:w-[400px] opacity-50">
-                        <p class="text-[#1A1A1A] text-lg leading-relaxed">
-                            «Читаю канал два года. Один пост сэкономил мне неделю на автоматизации отчётов.»
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-[#E5E5E5]"></div>
-                            <div>
-                                <p class="font-medium text-[#1A1A1A] text-[13px]">Имя Фамилия</p>
-                                <p class="text-[#888888] text-[13px]">подписчик Telegram</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carousel Dots -->
-                <div class="flex items-center justify-center gap-3">
-                    <div class="w-2 h-2 rounded-full bg-[#CCCCCC]"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-[--color-accent-green]"></div>
-                    <div class="w-2 h-2 rounded-full bg-[#CCCCCC]"></div>
-                </div>
-            </div>
+      <div class="writing-grid">
+        <div class="writing-card writing-card--featured">
+          <div class="writing-body">
+            <h3 class="writing-name">Книга «Процессная целостность»</h3>
+            <p class="writing-desc">Если бы я как критик делал описание книги, то я бы сказал: «Автор книги — живое воплощение идеи непрерывного развития и адаптации». Книга похожа на лонгитюдное наблюдение за персонажем, который через жизненные ситуации копает в самопознание, профессиональный рост и личностное развитие.</p>
+          </div>
+          <a href="#" class="project-link">→ Читать</a>
         </div>
-    </section>
 
-    <!-- Контакт Section -->
-    <section id="contact" class="bg-white">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
-            <div class="flex flex-col gap-8">
-                <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-black">Связаться</h2>
-                <p class="text-[#666666] text-base md:text-lg leading-[1.7] max-w-[700px]">
-                    Консультирую по AI, автоматизации и процессам. Провожу воркшопы для команд. Выступаю в подкастах и на конференциях. Если есть задача — напишите, обсудим.
-                </p>
-                <a href="mailto:hello@khabaroff.com" class="bg-[--color-primary] text-white text-[13px] font-medium px-8 py-4 rounded-[28px] hover:opacity-90 transition-opacity inline-block w-fit">
-                    Написать →
-                </a>
-                <div class="flex flex-col gap-2">
-                    <a href="mailto:hello@khabaroff.com" class="text-[#888888] text-[13px] hover:text-black transition-colors">hello@khabaroff.com</a>
-                    <a href="https://linkedin.com/in/khabaroff" class="text-[#888888] text-[13px] hover:text-black transition-colors">linkedin.com/in/khabaroff</a>
-                </div>
-            </div>
+        <div class="writing-card">
+          <div class="writing-body">
+            <h3 class="writing-name">Рассылка «Постпроцессная целостность»</h3>
+            <p class="writing-desc">Наблюдения, рефлексии и самоанализ. Построение моделей, полезные находки и советы по использованию различных тулов. Обсуждение обучения и образования для себя и других.</p>
+          </div>
+          <a href="https://khabaroff.substack.com" class="project-link">→ khabaroff.substack.com</a>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#1A1A1A]">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-15">
-            <div class="flex flex-col gap-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-                    <div class="flex flex-col gap-2">
-                        <div class="font-lora text-2xl font-medium text-white mb-2">Сергей Хабаров</div>
-                        <p class="text-[#666666] text-[13px] leading-relaxed">практик-преподаватель</p>
-                    </div>
-
-                    <div class="flex flex-col gap-3">
-                        <p class="text-[#666666] text-[13px] font-semibold mb-1">Ссылки</p>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Telegram</a>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">LinkedIn</a>
-                        <a href="mailto:hello@khabaroff.com" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Email</a>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">RSS</a>
-                    </div>
-
-                    <div class="flex flex-col gap-3">
-                        <p class="text-[#666666] text-[13px] font-semibold mb-1">Ещё</p>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Избранное</a>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Архив</a>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Гостевые посты</a>
-                    </div>
-
-                    <div class="flex flex-col gap-3">
-                        <p class="text-[#666666] text-[13px] font-semibold mb-1">Страницы</p>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Now</a>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">CV</a>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Избранные проекты</a>
-                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Подкасты</a>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-6 border-t border-[#333333]">
-                    <p class="text-[#666666] text-[13px]">2006—2026</p>
-                    <p class="text-[#666666] text-[13px]">Ереван</p>
-                </div>
-            </div>
+        <div class="writing-card">
+          <div class="writing-body">
+            <h3 class="writing-name">Telegram-канал</h3>
+            <p class="writing-desc">All I Know Is That I Don't Know Nothing — канал о развитии детей и взрослых. Название канала содержит ошибку. В этом красота формы, которая подтверждает содержание.</p>
+          </div>
+          <a href="#" class="project-link">→ Подписаться</a>
         </div>
-    </footer>
+      </div>
+
+      <!-- Blog Section -->
+      <div class="blog-section">
+        <div class="blog-header">
+          <h3 class="blog-title">Блог</h3>
+          <p class="blog-desc">Лонгриды на сайте — о системах, мышлении и работе.</p>
+        </div>
+        <div class="blog-columns">
+          <div class="blog-column">
+            <h4 class="blog-column-title">Последние</h4>
+            <div class="blog-list">
+              <div class="blog-item">
+                <a href="/blog/" class="blog-item-link">→ Новый пост о системах</a>
+                <p class="blog-item-desc">Как выстроить процессы, чтобы они работали без вас</p>
+              </div>
+              <div class="blog-item">
+                <a href="/blog/" class="blog-item-link">→ Заметки о продуктивности</a>
+                <p class="blog-item-desc">Почему GTD не работает и что делать вместо него</p>
+              </div>
+              <div class="blog-item">
+                <a href="/blog/" class="blog-item-link">→ Мысли об образовании</a>
+                <p class="blog-item-desc">Чему нас не учат в школе, но должны бы</p>
+              </div>
+            </div>
+          </div>
+          <div class="blog-column">
+            <h4 class="blog-column-title">Избранные</h4>
+            <div class="blog-list">
+              <div class="blog-item">
+                <a href="/blog/" class="blog-item-link">→ Гид по философии Roam Research</a>
+                <p class="blog-item-desc">Обзор приложения и принципов, которые за ним стоят — в двухчасовом видеообзоре</p>
+              </div>
+              <div class="blog-item">
+                <a href="/blog/" class="blog-item-link">→ «Думай как математик» — как научиться учиться</a>
+                <p class="blog-item-desc">10 ключевых идей книги «Думай как математик. Как решать любые задачи быстрее»</p>
+              </div>
+              <div class="blog-item">
+                <a href="/blog/" class="blog-item-link">→ Дерек Сиверс о смысле жизни</a>
+                <p class="blog-item-desc">Давайте побудем немного наивными и забудем, что решения нет</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Обо мне Section -->
+  <section id="about" class="section section--alt">
+    <div class="container">
+      <p class="section-label">03 · путь</p>
+      <h2 class="section-title">Обо мне</h2>
+      <p class="about-text">
+        За карьеру я поработал в разных индустриях — EdTech, маркетинг, медиа, HORECA, разработка — и попробовал себя в нескольких ролях, от CTO до директора по развитию.<br><br>
+        Это дало мне навык быстро разбираться в новом и строить системы там, где их не было. Сейчас я соединяю весь этот опыт: строю системы, учу команды и пишу о том, как это работает.
+      </p>
+      <a href="#" class="more-link">→ Полная история (устанете скроллить)</a>
+    </div>
+  </section>
+
+  <!-- Форматы Section -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">04 · форматы</p>
+      <h2 class="section-title">Как со мной работать</h2>
+      <p class="section-desc">Есть несколько способов поработать вместе.</p>
+
+      <div class="formats-grid">
+        <div class="format-card">
+          <div class="format-icon format-icon--primary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="format-name">Диагностика</h3>
+          <p class="format-desc">Разбираю процессы и показываю, где утекает время, деньги и внимание. На выходе — карта: что автоматизировать, что оставить. Дальше можете сами или идём вместе.</p>
+        </div>
+
+        <div class="format-card">
+          <div class="format-icon format-icon--green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="format-name">Моделирование процессов</h3>
+          <p class="format-desc">Беру один процесс и прорабатываю его до деталей: что, как, кто делает. На выходе — готовая схема для внедрения.</p>
+        </div>
+
+        <div class="format-card">
+          <div class="format-icon format-icon--yellow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="format-name">Внедрение</h3>
+          <p class="format-desc">Настраиваю, тестирую, запускаю. Обучаю команду на их реальных задачах и остаюсь на связи 30 дней после старта.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы Section -->
+  <section class="section section--alt testimonials-section">
+    <div class="container">
+      <p class="section-label">05 · говорят</p>
+      <h2 class="section-title">Отзывы</h2>
+    </div>
+    <div class="testimonials-scroll">
+      <div class="testimonial testimonial--faded">
+        <p class="testimonial-text">«Сергей видит систему там, где я вижу хаос. За месяц разложил процессы, которые мы не могли починить год.»</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div>
+            <p class="testimonial-name">Имя Фамилия</p>
+            <p class="testimonial-role">директор по операциям, компания</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial testimonial--active">
+        <p class="testimonial-text">«Не просто рассказал про AI — показал, как внедрить так, чтобы команда реально пользовалась.»</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div>
+            <p class="testimonial-name">Имя Фамилия</p>
+            <p class="testimonial-role">руководитель отдела, компания</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial testimonial--faded">
+        <p class="testimonial-text">«Читаю канал два года. Один пост сэкономил мне неделю на автоматизации отчётов.»</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div>
+            <p class="testimonial-name">Имя Фамилия</p>
+            <p class="testimonial-role">подписчик Telegram</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials-dots">
+      <span class="dot"></span>
+      <span class="dot dot--active"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <!-- Контакт Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Связаться</h2>
+      <p class="about-text">
+        Консультирую по AI, автоматизации и процессам. Провожу воркшопы для команд. Выступаю в подкастах и на конференциях. Если есть задача — напишите, обсудим.
+      </p>
+      <a href="mailto:hello@khabaroff.com" class="btn-primary" style="display:inline-block;width:fit-content">Написать →</a>
+      <div class="contact-links">
+        <a href="mailto:hello@khabaroff.com">hello@khabaroff.com</a>
+        <a href="https://linkedin.com/in/khabaroff">linkedin.com/in/khabaroff</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">Сергей Хабаров</div>
+          <p class="footer-tagline">практик-преподаватель</p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-heading">Ссылки</p>
+          <a href="#" class="footer-link">Telegram</a>
+          <a href="#" class="footer-link">LinkedIn</a>
+          <a href="mailto:hello@khabaroff.com" class="footer-link">Email</a>
+          <a href="/rss.xml" class="footer-link">RSS</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-heading">Ещё</p>
+          <a href="#" class="footer-link">Избранное</a>
+          <a href="#" class="footer-link">Архив</a>
+          <a href="#" class="footer-link">Гостевые посты</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-heading">Страницы</p>
+          <a href="#" class="footer-link">Now</a>
+          <a href="#" class="footer-link">CV</a>
+          <a href="#" class="footer-link">Избранные проекты</a>
+          <a href="#" class="footer-link">Подкасты</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>2006—2026</p>
+        <p>Ереван</p>
+      </div>
+    </div>
+  </footer>
 </Layout>
 
 <style>
-  h1, h2, h3, h4 {
-    font-family: 'Lora', serif !important;
+  /* Header */
+  .site-header { background: var(--color-white); }
+  .header-inner {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
   }
-  
-  .font-lora {
-    font-family: 'Lora', serif !important;
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--color-text);
   }
+  @media (min-width: 768px) { .logo { font-size: 24px; } }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  @media (min-width: 768px) { .nav { gap: 40px; } }
+  .nav-link {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--color-text); }
+  .nav-cta {
+    background: var(--color-primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 24px;
+    border-radius: 24px;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.9; }
+
+  /* Hero */
+  .hero { background: var(--color-white); }
+  .hero-inner {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  @media (min-width: 768px) {
+    .hero-inner { padding-top: 80px; padding-bottom: 80px; gap: 48px; }
+  }
+  @media (min-width: 1024px) {
+    .hero-inner { padding-top: 100px; padding-bottom: 100px; flex-direction: row; gap: 60px; }
+  }
+  .hero-content { flex: 1; display: flex; flex-direction: column; gap: 32px; }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.1;
+    color: var(--color-text);
+  }
+  @media (min-width: 768px) { .hero-title { font-size: 48px; } }
+  @media (min-width: 1024px) { .hero-title { font-size: 64px; } }
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+  @media (min-width: 768px) { .hero-subtitle { font-size: 24px; } }
+  .stats { display: flex; gap: 32px; padding-top: 32px; flex-wrap: wrap; }
+  @media (min-width: 768px) { .stats { gap: 64px; padding-top: 48px; } }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  @media (min-width: 768px) { .stat-number { font-size: 48px; } }
+  .stat-label {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .hero-actions { display: flex; gap: 16px; padding-top: 32px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 28px;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline {
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    font-size: 13px;
+    padding: 16px 36px;
+    border-radius: 28px;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--color-text); color: white; }
+  .hero-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  @media (min-width: 768px) { .hero-image { height: 400px; } }
+  @media (min-width: 1024px) { .hero-image { width: 400px; } }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Sections */
+  .section { padding: 48px 0; }
+  @media (min-width: 768px) { .section { padding: 64px 0; } }
+  @media (min-width: 1024px) { .section { padding: 80px 0; } }
+  .section--alt { background: var(--color-background); }
+  .section:not(.section--alt) { background: var(--color-white); }
+  .section-label {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin-bottom: 32px;
+  }
+  @media (min-width: 768px) { .section-title { font-size: 36px; margin-bottom: 48px; } }
+  @media (min-width: 1024px) { .section-title { font-size: 48px; } }
+  .section-desc {
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  @media (min-width: 768px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+  .project-card {
+    border: 1px solid var(--color-accent-green);
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 210px;
+  }
+  .project-name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+  .project-desc {
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .project-link {
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 13px;
+    transition: opacity 0.2s;
+  }
+  .project-link:hover { opacity: 0.7; }
+  .more-link {
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 18px;
+    transition: opacity 0.2s;
+  }
+  .more-link:hover { opacity: 0.7; }
+
+  /* Writing */
+  .writing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  @media (min-width: 768px) {
+    .writing-grid { grid-template-columns: 1fr 1fr 1fr; min-height: 450px; }
+  }
+  .writing-card {
+    border: 1px solid var(--color-accent-green);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--color-white);
+  }
+  .writing-card--featured {
+    border: 2px solid var(--color-accent-yellow);
+  }
+  .writing-name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+  .writing-desc {
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* Blog section */
+  .blog-section {
+    border-top: 1px solid var(--color-border);
+    padding-top: 32px;
+  }
+  @media (min-width: 768px) { .blog-section { padding-top: 48px; } }
+  .blog-header { margin-bottom: 32px; }
+  .blog-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+  .blog-desc {
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .blog-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px) { .blog-columns { grid-template-columns: 1fr 1fr; gap: 48px; } }
+  .blog-column-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 32px;
+  }
+  .blog-list { display: flex; flex-direction: column; gap: 20px; }
+  .blog-item-link {
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 18px;
+    transition: opacity 0.2s;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .blog-item-link:hover { opacity: 0.7; }
+  .blog-item-desc {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* About */
+  .about-text {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 768px) { .about-text { font-size: 18px; } }
+
+  /* Formats */
+  .formats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 768px) { .formats-grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .format-card {
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .format-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .format-icon--primary { background: rgba(47, 71, 96, 0.12); color: var(--color-primary); }
+  .format-icon--green { background: rgba(166, 189, 163, 0.12); color: var(--color-accent-green); }
+  .format-icon--yellow { background: rgba(247, 209, 116, 0.12); color: var(--color-accent-yellow); }
+  .format-name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .format-desc {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  @media (min-width: 768px) { .format-desc { font-size: 18px; } }
+
+  /* Testimonials */
+  .testimonials-section { overflow: hidden; }
+  .testimonials-scroll {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    padding: 0 16px 16px;
+    overflow-x: auto;
+  }
+  .testimonial {
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 320px;
+    max-width: 400px;
+    flex-shrink: 0;
+  }
+  .testimonial--active {
+    border: 2px solid var(--color-accent-green);
+  }
+  .testimonial--faded { opacity: 0.5; }
+  .testimonial-text {
+    color: var(--color-text);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-border);
+    flex-shrink: 0;
+  }
+  .testimonial-name { font-weight: 500; color: var(--color-text); font-size: 13px; }
+  .testimonial-role { color: var(--color-text-muted); font-size: 13px; }
+  .testimonials-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 32px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+  }
+  .dot--active {
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent-green);
+  }
+
+  /* Contact */
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .contact-links a {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .contact-links a:hover { color: var(--color-text); }
+
+  /* Footer */
+  .footer { background: var(--color-dark); }
+  .footer-inner { padding-top: 48px; padding-bottom: 48px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+  @media (min-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+  .footer-col { display: flex; flex-direction: column; gap: 12px; }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .footer-tagline { color: var(--color-text-secondary); font-size: 13px; }
+  .footer-heading {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .footer-link {
+    color: #aaa;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: white; }
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid #333;
+  }
+  @media (min-width: 768px) {
+    .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+  }
+  .footer-bottom p { color: var(--color-text-secondary); font-size: 13px; }
 </style>

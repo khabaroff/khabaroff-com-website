@@ -1,0 +1,31 @@
+---
+interface Props {
+  gap?: 'small' | 'medium' | 'large';
+}
+
+const { gap = 'medium' } = Astro.props;
+---
+
+<div class:list={['two-columns', `two-columns--${gap}`]}>
+  <slot />
+</div>
+
+<style>
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 24px 0;
+  }
+  .two-columns--small { gap: 16px; }
+  .two-columns--medium { gap: 24px; }
+  .two-columns--large { gap: 32px; }
+
+  @media (min-width: 768px) {
+    .two-columns {
+      grid-template-columns: 1fr 1fr;
+    }
+    .two-columns--small { gap: 24px; }
+    .two-columns--medium { gap: 32px; }
+    .two-columns--large { gap: 48px; }
+  }
+</style>

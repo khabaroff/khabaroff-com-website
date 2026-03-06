@@ -1,0 +1,163 @@
+---
+interface Props {
+  title: string;
+  author: string;
+  cover?: string;
+  rating?: number;
+  year?: number;
+  description?: string;
+  quotes?: string[];
+  amazonLink?: string;
+}
+
+const { title, author, cover, rating, year, description, quotes, amazonLink } = Astro.props;
+
+const stars = rating ? Array.from({ length: 5 }, (_, i) => i < rating) : [];
+---
+
+<div class="book-card">
+  <div class="book-inner">
+    {cover && (
+      <div class="book-cover">
+        <img src={cover} alt={`Обложка книги "${title}"`} />
+      </div>
+    )}
+    <div class="book-content">
+      <div class="book-header">
+        <h3 class="book-title">{title}</h3>
+        <p class="book-author">
+          {author}
+          {year && <span class="book-year">({year})</span>}
+        </p>
+      </div>
+
+      {rating && (
+        <div class="book-rating">
+          {stars.map(filled => (
+            <span class:list={['star', { 'star--filled': filled }]}>&#9733;</span>
+          ))}
+          <span class="rating-text">{rating}/5</span>
+        </div>
+      )}
+
+      {description && <p class="book-description">{description}</p>}
+
+      {quotes && quotes.length > 0 && (
+        <div class="book-quotes">
+          <h4 class="quotes-title">Ключевые цитаты:</h4>
+          {quotes.map(q => (
+            <blockquote class="book-quote">
+              <p>&laquo;{q}&raquo;</p>
+            </blockquote>
+          ))}
+        </div>
+      )}
+
+      {amazonLink && (
+        <a href={amazonLink} target="_blank" rel="noopener noreferrer" class="book-link">
+          Купить на Amazon &nearr;
+        </a>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .book-card {
+    margin: 24px 0;
+  }
+  .book-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+  @media (min-width: 768px) {
+    .book-inner {
+      flex-direction: row;
+    }
+  }
+  .book-cover {
+    flex-shrink: 0;
+  }
+  .book-cover img {
+    width: 128px;
+    height: 192px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .book-content {
+    flex: 1;
+  }
+  .book-header {
+    margin-bottom: 16px;
+  }
+  .book-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  .book-author {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+  .book-year {
+    margin-left: 8px;
+  }
+  .book-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .star {
+    font-size: 16px;
+    color: #d1d5db;
+  }
+  .star--filled {
+    color: #fbbf24;
+  }
+  .rating-text {
+    margin-left: 8px;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+  .book-description {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .quotes-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+  .book-quote {
+    border-left: 2px solid var(--color-accent-green);
+    padding-left: 12px;
+    margin-bottom: 8px;
+  }
+  .book-quote p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .book-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-primary);
+    transition: opacity 0.2s;
+  }
+  .book-link:hover {
+    opacity: 0.7;
+  }
+</style>

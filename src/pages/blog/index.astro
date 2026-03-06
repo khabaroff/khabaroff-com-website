@@ -1,129 +1,159 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/BaseLayout.astro';
+import PostLayout from '../../layouts/PostLayout.astro';
+import { getTagSlug } from '../../utils/tags';
 
-// Получаем все посты
 const allPosts = await getCollection('posts');
-
-// Фильтруем drafts и сортируем по дате
 const posts = allPosts
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout title="Блог - Сергей Хабаров">
-  <!-- Header -->
-  <header class="bg-white border-b border-gray-200">
-    <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-5 flex items-center justify-between flex-wrap gap-4">
-      <div class="font-medium text-xl md:text-2xl text-black" style="font-family: 'Lora', serif">
-        <a href="/" class="hover:opacity-70 transition-opacity">Сергей Хабаров</a>
+<PostLayout title="Блог" description="Лонгриды о системах, мышлении и работе">
+  <main class="blog-page">
+    <div class="container">
+      <div class="blog-header">
+        <p class="blog-label">Блог</p>
+        <h1 class="blog-title">Лонгриды о системах, мышлении и работе</h1>
+        <p class="blog-desc">
+          Заметки, рефлексии и наблюдения. Пишу о том, как выстраивать процессы,
+          развивать мышление и эффективно работать с технологиями.
+        </p>
       </div>
-      <nav class="flex items-center gap-6 md:gap-10 flex-wrap">
-        <a href="/" class="text-[#888888] text-[13px] hover:text-black transition-colors">Главная</a>
-        <a href="/blog/" class="text-[--color-primary] text-[13px] font-medium">Блог</a>
-        <a href="/#contact" class="bg-[--color-primary] text-white text-[13px] font-medium px-6 py-2.5 rounded-3xl hover:opacity-90 transition-opacity">Написать</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Main Content -->
-  <main class="bg-white">
-    <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
-      <div class="flex flex-col gap-8 md:gap-12">
-        <!-- Header Section -->
-        <div class="flex flex-col gap-4">
-          <p class="text-[#888888] text-[13px] font-medium">Блог</p>
-          <h1 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-black" style="font-family: 'Lora', serif">
-            Лонгриды о системах, мышлении и работе
-          </h1>
-          <p class="text-[#666666] text-lg leading-relaxed max-w-[700px]">
-            Заметки, рефлексии и наблюдения. Пишу о том, как выстраивать процессы, 
-            развивать мышление и эффективно работать с технологиями.
-          </p>
+      {posts.length === 0 ? (
+        <div class="empty">
+          <p>Постов пока нет.</p>
         </div>
+      ) : (
+        <div class="posts-grid">
+          {posts.map(post => (
+            <article class="post-card">
+              <time class="post-date">
+                {post.data.date.toLocaleDateString('ru-RU', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
 
-        <!-- Posts Grid -->
-        {posts.length === 0 ? (
-          <div class="text-center py-12">
-            <p class="text-[#666666] text-lg">Постов пока нет.</p>
-          </div>
-        ) : (
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {posts.map(post => (
-              <article class="flex flex-col gap-4 group">
-                <div class="flex flex-col gap-2">
-                  <time class="text-[#888888] text-[13px] font-medium">
-                    {post.data.date.toLocaleDateString('ru-RU', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </time>
-                  
-                  <h2 class="text-2xl font-medium text-black group-hover:opacity-70 transition-opacity" style="font-family: 'Lora', serif">
-                    <a href={`/${post.slug}/`} class="block" style="font-family: inherit">
-                      {post.data.title}
-                    </a>
-                  </h2>
-                  
-                  {post.data.description && (
-                    <p class="text-[#666666] text-base leading-relaxed line-clamp-3">
-                      {post.data.description}
-                    </p>
-                  )}
-                  
-                  {post.data.tags && post.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-2 pt-2">
-                      {post.data.tags.map(tag => (
-                        <a 
-                          href={`/tags/${tag}`} 
-                          class="inline-block bg-[#F5F5F5] px-3 py-1 rounded-full text-[#666666] text-[12px] hover:bg-[--color-accent-green] hover:text-white transition-colors"
-                        >
-                          {tag}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+              <h2 class="post-title">
+                <a href={`/${post.slug}/`}>{post.data.title}</a>
+              </h2>
+
+              {post.data.description && (
+                <p class="post-desc">{post.data.description}</p>
+              )}
+
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="post-tags">
+                  {post.data.tags.map((tag: string) => (
+                    <a href={`/tags/${getTagSlug(tag)}/`} class="tag">{tag}</a>
+                  ))}
                 </div>
-                
-                <a 
-                  href={`/${post.slug}/`}
-                  class="text-black font-medium text-[13px] hover:opacity-70 transition-opacity self-start"
-                >
-                  → Читать далее
-                </a>
-              </article>
-            ))}
-          </div>
-        )}
-      </div>
+              )}
+
+              <a href={`/${post.slug}/`} class="post-read">→ Читать далее</a>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#1A1A1A]">
-    <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-15">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <p class="text-[#666666] text-[13px]">2006—2026</p>
-        <p class="text-[#666666] text-[13px]">Ереван</p>
-      </div>
-    </div>
-  </footer>
-</Layout>
+</PostLayout>
 
 <style>
-  h1, h2, h3, h4 {
-    font-family: 'Lora', serif !important;
+  .blog-page {
+    background: var(--color-white);
+    padding: 48px 0 80px;
   }
-  
-  .font-lora {
-    font-family: 'Lora', serif !important;
+  @media (min-width: 768px) { .blog-page { padding: 64px 0 80px; } }
+  .blog-header { margin-bottom: 48px; }
+  .blog-label {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
   }
-
-  .line-clamp-3 {
+  .blog-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin-bottom: 16px;
+  }
+  @media (min-width: 768px) { .blog-title { font-size: 36px; } }
+  @media (min-width: 1024px) { .blog-title { font-size: 48px; } }
+  .blog-desc {
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 700px;
+  }
+  .empty {
+    text-align: center;
+    padding: 48px 0;
+  }
+  .empty p { color: var(--color-text-secondary); font-size: 18px; }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px) { .posts-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .post-date {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .post-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+  .post-title a { transition: opacity 0.2s; }
+  .post-title a:hover { opacity: 0.7; }
+  .post-desc {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 8px;
+  }
+  .tag {
+    background: var(--color-background-alt);
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .tag:hover {
+    background: var(--color-accent-green);
+    color: white;
+  }
+  .post-read {
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 13px;
+    transition: opacity 0.2s;
+    margin-top: 8px;
+  }
+  .post-read:hover { opacity: 0.7; }
 </style>
