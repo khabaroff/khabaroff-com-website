@@ -23,152 +23,102 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Локальный блог на базе Astro 5 с Git-based CMS Tina для визуального редактирования контента. Проект демонстрирует интеграцию визуального редактора Tina с современным SSG Astro и поддержкой кастомных MDX-компонентов для гибкой вёрстки контента.
-
-## OpenSpec Workflow
-
-This project uses OpenSpec for spec-driven development. Always check `@/openspec/AGENTS.md` when working with proposals, specs, or planning changes.
-
-### Key Commands
-
-```bash
-# View active changes and specs
-openspec list                  # List active change proposals
-openspec list --specs          # List all specifications
-openspec show [item]           # View change or spec details
-
-# Create and validate proposals
-openspec validate [change] --strict --no-interactive  # Validate changes
-openspec archive <change-id> --yes  # Archive completed change
-
-# Project context
-# Edit openspec/project.md to add project-specific context
-```
-
-### When to Create Proposals
-
-Create OpenSpec change proposal for:
-
-- New features or capabilities
-- Breaking changes (API, schema, architecture)
-- Performance/security work that changes behavior
-
-Skip proposals for:
-
-- Bug fixes (restoring intended behavior)
-- Typos, formatting, comments
-- Dependency updates (non-breaking)
-
-See `openspec/AGENTS.md` for complete workflow details.
+Персональный сайт и блог на Astro 5 с MDX-контентом, scoped CSS и локальными шрифтами. Нет CMS, нет React, нет Tailwind, нет клиентского JS. Один dev-сервер, минимум зависимостей (4 пакета).
 
 ## Development Commands
 
-### Setup
-
 ```bash
-npm install -g @fission-ai/openspec@latest
-npm install
-```
-
-### Build & Run
-
-```bash
-# Запуск Astro dev сервера
-npm run dev
-
-# Запуск Tina CMS в отдельном терминале
-npx tinacms dev
-
-# После запуска обоих серверов:
-# - Сайт доступен на http://localhost:4321
-# - Tina админ панель на http://localhost:4321/admin
-```
-
-### Build
-
-```bash
-# Сборка для продакшена
-npm run build
-
-# Превью продакшен сборки
-npm run preview
+npm install          # Установка зависимостей
+npm run dev          # Dev-сервер на http://localhost:4321
+npm run build        # Production сборка
+npm run preview      # Превью сборки
 ```
 
 ## Architecture
 
-### Git-based CMS Workflow
-
-Tina CMS работает напрямую с файловой системой:
-
-1. **Редактирование**: Tina предоставляет визуальный редактор на `/admin`
-2. **Сохранение**: Изменения записываются в `.mdx` файлы в `src/content/posts/`
-3. **Рендеринг**: Astro читает эти файлы и генерирует HTML
-4. **Git**: Все изменения коммитятся в репозиторий (Git-based workflow)
-
 ### Content Collections
 
-Проект использует Astro Content Collections для типизированного контента:
+- Схема в `src/content/config.ts` (Zod validation)
+- 4 типа постов: статья, заметка, проект, рецензия
+- MDX файлы в `src/content/posts/`
+- Валидация при сборке через `getCollection('posts')`
 
-- Схема контента определяется в `src/content/config.ts`
-- Tina схема в `tina/config.ts` должна соответствовать Astro схеме
-- MDX файлы валидируются на соответствие схеме при сборке
+### Layouts
+
+- `BaseLayout.astro` — минимальный layout (head, slot). Используется на главной
+- `PostLayout.astro` — layout с header и footer. Используется на страницах блога
 
 ### MDX Components
 
-Кастомные компоненты импортируются глобально через `mdx.config.js`:
+6 Astro-компонентов в `src/components/`:
 
-- `<TwoColumns>` - двухколоночная вёрстка
-- `<ImageWide>` - широкие изображения
-- `<Callout>` - выделенные блоки текста
+- `Callout.astro` — info/warning/success блоки
+- `ImageWide.astro` — широкие изображения с подписью
+- `VideoEmbed.astro` — YouTube/Vimeo embed
+- `TwoColumns.astro` — двухколоночная вёрстка
+- `QuoteBlock.astro` — цитаты (default/large/pullout)
+- `BookCard.astro` — карточка книги с рейтингом
 
-Компоненты доступны в Tina через блочный редактор (blocks).
+Компоненты передаются в MDX через `<Content components={...} />` в `src/pages/[slug].astro`.
+
+### Styling
+
+- **Scoped CSS** в каждом `.astro` файле через `<style>`
+- **CSS custom properties** в `src/styles/global.css` (цвета, шрифты, отступы)
+- **Локальные WOFF2 шрифты**: Inter (400/500/600), Lora (400/500) в `public/fonts/`
+- Импорт глобальных стилей: `<style is:global>@import '../styles/global.css';</style>` в layouts
+
+### Routes
+
+- `/` — главная (`src/pages/index.astro`)
+- `/blog/` — список постов (`src/pages/blog/index.astro`)
+- `/[slug]/` — страница поста (`src/pages/[slug].astro`)
+- `/tags/[tag]/` — фильтр по тегу (`src/pages/tags/[tag].astro`)
+- `/rss.xml` — RSS фид
+- `/404` — страница ошибки
 
 ### Key Patterns
 
-**Tina Schema ↔ Astro Schema Sync**: Схемы контента в Tina и Astro должны быть синхронизированы. Изменения в одной требуют обновления другой.
+**Кириллические теги**: `src/utils/tags.ts` транслитерирует русские теги в URL-safe слаги (управление → upravlenie).
 
-**MDX Component Registration**: Все MDX компоненты должны быть:
-1. Зарегистрированы в `mdx.config.js`
-2. Добавлены в Tina schema как блоки
-3. Типизированы в Astro content config
+**Фильтрация черновиков**: Посты с `draft: true` исключаются из списков и RSS. Фильтр: `posts.filter(p => !p.data.draft)`.
 
-**Local-First Development**: Проект работает полностью локально без внешних сервисов. Tina в локальном режиме, контент в файлах.
+**Сортировка**: По дате, от новых к старым: `.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())`.
 
 ### Directory Structure
 
 ```
-/
-├── src/
-│   ├── content/
-│   │   ├── posts/          # MDX файлы постов (редактируются через Tina)
-│   │   └── config.ts       # Схема контента для Astro
-│   ├── components/         # React компоненты для MDX
-│   ├── pages/
-│   │   ├── index.astro     # Главная со списком постов
-│   │   ├── posts/[slug].astro  # Страница поста
-│   │   └── tags/[tag].astro    # Страница тега
-│   └── layouts/            # Layouts для страниц
-├── tina/
-│   └── config.ts           # Конфигурация и схема Tina CMS
-└── public/                 # Статические файлы (изображения)
+src/
+├── content/
+│   ├── posts/           # MDX файлы постов
+│   └── config.ts        # Zod-схема контента
+├── components/          # 6 Astro MDX-компонентов
+├── layouts/             # BaseLayout, PostLayout
+├── pages/               # Роуты (index, [slug], blog, tags, rss, 404)
+├── styles/
+│   └── global.css       # CSS variables, @font-face, reset
+└── utils/
+    └── tags.ts          # Транслитерация тегов
+public/
+├── fonts/               # WOFF2 (Inter, Lora)
+└── images/              # Статика
 ```
+
+## OpenSpec Workflow
+
+This project uses OpenSpec for spec-driven development. See `openspec/AGENTS.md` for details.
+
+```bash
+openspec list                  # Активные proposals
+openspec list --specs          # Все спецификации
+openspec validate [change] --strict --no-interactive
+```
+
+Create proposals for new features, breaking changes, architecture shifts. Skip for bug fixes, typos, dependency updates.
 
 ## Important Notes
 
-### Запуск двух серверов
-
-Для полноценной работы нужно запустить **два процесса одновременно**:
-1. `npm run dev` - Astro dev сервер
-2. `npx tinacms dev` - Tina CMS сервер
-
-Без второго процесса админ панель `/admin` не будет работать.
-
-### Фронтматтер и Tina
-
-Все поля в фронтматтере MDX файлов должны быть определены в Tina schema. Ручное редактирование фронтматтера возможно, но Tina может его перезаписать.
-
-### Типы и валидация
-
-- Astro валидирует контент при импорте через `getCollection()`
-- Tina валидирует при редактировании в админке
-- TypeScript типы генерируются Tina автоматически при запуске `tinacms dev`
+- Нет CMS — контент редактируется напрямую в MDX файлах
+- Нет клиентского JS — все компоненты серверные (Astro)
+- Один процесс для разработки: `npm run dev`
+- Шрифты локальные, не CDN — preload в layouts

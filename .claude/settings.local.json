@@ -16,7 +16,8 @@
       "WebFetch(domain:khabaroff.com)",
       "WebFetch(domain:github.com)",
       "Bash(lsof:*)",
-      "Bash(xargs kill -9)"
+      "Bash(xargs kill -9)",
+      "Bash(mkdir:*)"
     ]
   }
 }

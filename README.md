@@ -1,282 +1,116 @@
-# Блог на Astro 5 + Tina CMS
+# khabaroff.com
 
-Локальный демонстрационный блог с визуальным редактированием контента через Tina CMS и кастомными MDX компонентами.
+Персональный сайт и блог Сергея Хабарова. Astro 5, MDX, scoped CSS, локальные шрифты. Без CMS, без фреймворков, без клиентского JS.
 
-## 📋 Возможности
+## Стек
 
-- **Astro 5** - современный SSG с отличной производительностью
-- **Tina CMS** - Git-based headless CMS с визуальным редактором
-- **MDX** - Markdown с поддержкой React компонентов
-- **Кастомные компоненты**:
-  - `TwoColumns` - двухколоночная вёрстка
-  - `ImageWide` - широкие изображения с подписями
-  - `Callout` - выделенные блоки (info/warning/success)
-- **Type-safe контент** - валидация схемы через Zod
-- **Тегирование** - организация постов по тегам
+- **Astro 5** — SSG с Content Collections
+- **MDX** — Markdown + Astro-компоненты
+- **Scoped CSS** — CSS custom properties, без Tailwind
+- **Локальные шрифты** — Inter + Lora (WOFF2)
 
-## 🚀 Быстрый старт
-
-### Требования
-
-- Node.js 18+
-- npm или yarn
-
-### Установка
+## Быстрый старт
 
 ```bash
-# Клонируйте репозиторий
-git clone <url>
-cd khabaroff-tina
-
-# Установите зависимости
 npm install
-```
-
-### Запуск
-
-**Важно:** Для полноценной работы нужно запустить **два процесса одновременно** в разных терминалах:
-
-#### Терминал 1: Astro dev сервер
-
-```bash
 npm run dev
 ```
 
-Сайт будет доступен на [http://localhost:4444](http://localhost:4444)
-
-#### Терминал 2: Tina CMS сервер
+Сайт на [http://localhost:4321](http://localhost:4321).
 
 ```bash
-npx tinacms dev
+npm run build    # Production сборка
+npm run preview  # Превью сборки
 ```
 
-Админ панель будет доступна на [http://localhost:4444/admin](http://localhost:4444/admin)
-
-### Production сборка
-
-```bash
-# Создать production build
-npm run build
-
-# Превью production build
-npm run preview
-```
-
-## 📁 Структура проекта
+## Структура
 
 ```
-/
-├── public/
-│   └── images/           # Статические изображения
-├── src/
-│   ├── content/
-│   │   ├── config.ts     # Astro Content Collections schema
-│   │   └── posts/        # MDX файлы постов
-│   ├── components/       # React компоненты для MDX
-│   │   ├── TwoColumns.tsx
-│   │   ├── ImageWide.tsx
-│   │   └── Callout.tsx
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-│   ├── pages/
-│   │   ├── index.astro   # Главная страница
-│   │   ├── posts/
-│   │   │   └── [slug].astro
-│   │   └── tags/
-│   │       └── [tag].astro
-│   └── styles/
-│       └── global.css
-├── tina/
-│   └── config.ts         # Tina CMS schema и конфигурация
-├── astro.config.mjs      # Конфигурация Astro
-└── package.json
+src/
+├── content/
+│   ├── posts/           # MDX файлы постов
+│   └── config.ts        # Схема контента (Zod)
+├── components/          # Astro-компоненты для MDX
+│   ├── Callout.astro
+│   ├── ImageWide.astro
+│   ├── VideoEmbed.astro
+│   ├── TwoColumns.astro
+│   ├── QuoteBlock.astro
+│   └── BookCard.astro
+├── layouts/
+│   ├── BaseLayout.astro # Базовый layout (главная)
+│   └── PostLayout.astro # Layout для блога (header + footer)
+├── pages/
+│   ├── index.astro      # Главная
+│   ├── [slug].astro     # Страница поста
+│   ├── blog/index.astro # Список постов
+│   ├── tags/[tag].astro # Фильтр по тегу
+│   ├── rss.xml.ts       # RSS фид
+│   └── 404.astro        # Страница ошибки
+├── styles/
+│   └── global.css       # CSS variables, шрифты, reset
+└── utils/
+    └── tags.ts          # Транслитерация тегов для URL
+public/
+├── fonts/               # WOFF2 шрифты (Inter, Lora)
+└── images/              # Статические изображения
 ```
 
-## ✍️ Работа с контентом
+## Контент
 
-### Создание нового поста
+### Типы постов
 
-#### Через Tina CMS (рекомендуется)
+| Тип | Назначение |
+|-----|-----------|
+| `статья` | Лонгриды, гайды, обзоры |
+| `заметка` | Короткие мысли, заметки |
+| `проект` | Описание проектов |
+| `рецензия` | Рецензии на книги |
 
-1. Откройте [http://localhost:4444/admin](http://localhost:4444/admin)
-2. Нажмите "Posts" → "Create New"
-3. Заполните поля:
-   - **Title** (обязательно)
-   - **Date** (обязательно)
-   - **Tags** (опционально)
-   - **Description** (опционально)
-   - **Body** - основной контент
-4. Нажмите "Save"
-
-#### Вручную
-
-Создайте файл `src/content/posts/your-post.mdx`:
+### Frontmatter
 
 ```mdx
 ---
-title: "Заголовок поста"
-date: 2026-01-25T12:00:00.000Z
-tags: ["astro", "blog"]
-description: "Краткое описание"
+title: "Заголовок"
+date: 2026-01-25
+type: статья
+tags: ["тег1", "тег2"]
+description: "Описание"
 draft: false
+cover: "/images/cover.jpg"
+coverAlt: "Описание обложки"
+rating: 4          # Только для рецензий (1-5)
+projectUrl: "..."  # Только для проектов
 ---
-
-# Ваш контент
-
-Обычный Markdown текст...
-
-<Callout type="info">
-Важная информация!
-</Callout>
 ```
 
-### Использование MDX компонентов
-
-#### TwoColumns
+### MDX-компоненты
 
 ```mdx
+<Callout type="info">Текст</Callout>          <!-- info | warning | success -->
+<ImageWide src="/images/pic.jpg" alt="..." caption="Подпись" />
+<VideoEmbed url="https://youtube.com/watch?v=..." />
 <TwoColumns>
-  <div>
-    Левая колонка
-  </div>
-  <div>
-    Правая колонка
-  </div>
+  <div>Левая</div>
+  <div>Правая</div>
 </TwoColumns>
+<QuoteBlock variant="large" author="Автор">Цитата</QuoteBlock>
+<BookCard title="Книга" author="Автор" rating={4} />
 ```
 
-#### ImageWide
+## Роуты
 
-```mdx
-<ImageWide
-  src="/images/example.svg"
-  alt="Описание"
-  caption="Подпись к изображению"
-/>
-```
+- `/` — главная
+- `/blog/` — список постов
+- `/[slug]/` — страница поста
+- `/tags/[tag]/` — посты по тегу
+- `/rss.xml` — RSS фид
 
-#### Callout
+## Добавление нового MDX-компонента
 
-```mdx
-<Callout type="info">
-Информационный блок
-</Callout>
+1. Создать `src/components/MyComponent.astro`
+2. Импортировать в `src/pages/[slug].astro` и передать в `<Content components={...} />`
 
-<Callout type="warning">
-Предупреждение
-</Callout>
-
-<Callout type="success">
-Успешное сообщение
-</Callout>
-```
-
-## 🔧 Добавление нового MDX компонента
-
-1. **Создайте React компонент** в `src/components/`:
-
-```tsx
-// src/components/MyComponent.tsx
-interface MyComponentProps {
-  text: string;
-}
-
-export default function MyComponent({ text }: MyComponentProps) {
-  return <div className="my-component">{text}</div>;
-}
-```
-
-2. **Зарегистрируйте в Tina** (`tina/config.ts`):
-
-```ts
-{
-  type: 'rich-text',
-  name: 'body',
-  templates: [
-    // ... существующие компоненты
-    {
-      name: 'MyComponent',
-      label: 'My Component',
-      fields: [
-        {
-          name: 'text',
-          label: 'Text',
-          type: 'string',
-        },
-      ],
-    },
-  ],
-}
-```
-
-3. **Импортируйте в `[slug].astro`**:
-
-```astro
-import MyComponent from '../../components/MyComponent';
-
-<Content components={{ TwoColumns, ImageWide, Callout, MyComponent }} />
-```
-
-## ⚙️ Синхронизация схем
-
-**Важно:** Astro Content Collections schema и Tina schema должны быть синхронизированы!
-
-При изменении полей контента:
-
-1. Обновите `src/content/config.ts` (Astro schema)
-2. Обновите `tina/config.ts` (Tina schema)
-3. Используйте одинаковые имена полей
-
-### Соответствие типов
-
-| Astro (Zod) | Tina |
-|-------------|------|
-| `z.string()` | `type: 'string'` |
-| `z.date()` | `type: 'datetime'` |
-| `z.array(z.string())` | `list: true` |
-| `z.boolean()` | `type: 'boolean'` |
-
-## 🎨 Стилизация
-
-Глобальные стили находятся в `src/styles/global.css`.
-
-Основные CSS переменные:
-
-```css
-:root {
-  --max-width: 800px;
-  --color-info: #e3f2fd;
-  --color-warning: #fff3e0;
-  --color-success: #e8f5e9;
-}
-```
-
-## 🐛 Troubleshooting
-
-### Tina admin не открывается
-
-- Убедитесь, что запущен `npx tinacms dev`
-- Проверьте, что Astro dev сервер работает на порту 4444
-- Очистите кеш браузера
-
-### Компоненты не отображаются в постах
-
-- Убедитесь, что компоненты импортированы в `[slug].astro`
-- Проверьте консоль браузера на наличие ошибок
-- Проверьте, что React интеграция настроена в `astro.config.mjs`
-
-### Ошибки валидации контента
-
-- Проверьте, что frontmatter соответствует schema в `src/content/config.ts`
-- Убедитесь, что обязательные поля (`title`, `date`) заполнены
-- Проверьте формат даты (должен быть ISO 8601)
-
-## 📚 Документация
-
-- [Astro Documentation](https://docs.astro.build)
-- [Tina CMS Documentation](https://tina.io/docs/)
-- [MDX Documentation](https://mdxjs.com/)
-
-## 📄 Лицензия
+## Лицензия
 
 MIT
