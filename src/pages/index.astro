@@ -22,9 +22,9 @@ import Layout from '../layouts/BaseLayout.astro';
       <div class="hero-content">
         <p class="section-label">00 · практик-преподаватель</p>
         <h1 class="hero-title">
-          Изучаю проблемы,<br>
-          которые возникают<br>
-          у людей с технологиями
+          <span class="hero-line">Изучаю проблемы,</span>
+          <span class="hero-line">которые возникают</span>
+          <span class="hero-line">у людей с технологиями</span>
         </h1>
         <p class="hero-subtitle">и у технологий с людьми</p>
 
@@ -285,7 +285,7 @@ import Layout from '../layouts/BaseLayout.astro';
       <p class="about-text">
         Консультирую по AI, автоматизации и процессам. Провожу воркшопы для команд. Выступаю в подкастах и на конференциях. Если есть задача — напишите, обсудим.
       </p>
-      <a href="mailto:hello@khabaroff.com" class="btn-primary" style="display:inline-block;width:fit-content">Написать →</a>
+      <a href="mailto:hello@khabaroff.com" class="btn-primary btn-inline">Написать →</a>
       <div class="contact-links">
         <a href="mailto:hello@khabaroff.com">hello@khabaroff.com</a>
         <a href="https://linkedin.com/in/khabaroff">linkedin.com/in/khabaroff</a>
@@ -359,6 +359,7 @@ import Layout from '../layouts/BaseLayout.astro';
   .nav-link {
     color: var(--color-text-muted);
     font-size: 13px;
+    padding: 12px 4px;
     transition: color 0.2s;
   }
   .nav-link:hover { color: var(--color-text); }
@@ -367,7 +368,8 @@ import Layout from '../layouts/BaseLayout.astro';
     color: white;
     font-size: 13px;
     font-weight: 500;
-    padding: 10px 24px;
+    padding: 12px 24px;
+    min-height: 44px;
     border-radius: 24px;
     transition: opacity 0.2s;
   }
@@ -398,7 +400,10 @@ import Layout from '../layouts/BaseLayout.astro';
     color: var(--color-text);
   }
   @media (min-width: 768px) { .hero-title { font-size: 48px; } }
-  @media (min-width: 1024px) { .hero-title { font-size: 64px; } }
+  @media (min-width: 1024px) {
+    .hero-title { font-size: 64px; }
+    .hero-line { display: block; }
+  }
   .hero-subtitle {
     font-family: var(--font-display);
     font-size: 20px;
@@ -432,6 +437,7 @@ import Layout from '../layouts/BaseLayout.astro';
     transition: opacity 0.2s;
   }
   .btn-primary:hover { opacity: 0.9; }
+  .btn-inline { display: inline-block; width: fit-content; }
   .btn-outline {
     border: 1px solid var(--color-text);
     color: var(--color-text);
@@ -534,7 +540,7 @@ import Layout from '../layouts/BaseLayout.astro';
     margin-bottom: 48px;
   }
   @media (min-width: 768px) {
-    .writing-grid { grid-template-columns: 1fr 1fr 1fr; min-height: 450px; }
+    .writing-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   .writing-card {
     border: 1px solid var(--color-accent-green);
@@ -669,7 +675,10 @@ import Layout from '../layouts/BaseLayout.astro';
     justify-content: center;
     padding: 0 16px 16px;
     overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
+  .testimonials-scroll::-webkit-scrollbar { display: none; }
   .testimonial {
     border: 1px solid var(--color-border);
     border-radius: 16px;
@@ -680,6 +689,7 @@ import Layout from '../layouts/BaseLayout.astro';
     min-width: 320px;
     max-width: 400px;
     flex-shrink: 0;
+    scroll-snap-align: center;
   }
   .testimonial--active {
     border: 2px solid var(--color-accent-green);
@@ -703,6 +713,7 @@ import Layout from '../layouts/BaseLayout.astro';
   .testimonials-dots {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 12px;
     padding-top: 32px;
   }
@@ -751,9 +762,9 @@ import Layout from '../layouts/BaseLayout.astro';
     color: white;
     margin-bottom: 8px;
   }
-  .footer-tagline { color: var(--color-text-secondary); font-size: 13px; }
+  .footer-tagline { color: var(--color-footer-text); font-size: 13px; }
   .footer-heading {
-    color: var(--color-text-secondary);
+    color: var(--color-footer-text);
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 4px;
@@ -774,5 +785,5 @@ import Layout from '../layouts/BaseLayout.astro';
   @media (min-width: 768px) {
     .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
   }
-  .footer-bottom p { color: var(--color-text-secondary); font-size: 13px; }
+  .footer-bottom p { color: var(--color-footer-text); font-size: 13px; }
 </style>

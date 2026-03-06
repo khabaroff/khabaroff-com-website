@@ -19,6 +19,12 @@ const { src, alt, caption } = Astro.props;
   .image-wide {
     margin: 32px 0;
   }
+  @media (min-width: 1200px) {
+    .image-wide {
+      margin-left: -80px;
+      margin-right: -80px;
+    }
+  }
   .image-wrap {
     overflow: hidden;
     border-radius: 8px;
