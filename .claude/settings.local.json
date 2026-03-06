@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(openspec:*)",
+      "Bash(git:*)",
+      "Bash(npx:*)",
+      "Bash(nvm:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "Bash(sh)",
+      "WebFetch(domain:openspec.dev)",
+      "Bash(tree:*)",
+      "Bash(pkill:*)",
+      "WebFetch(domain:khabaroff.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill -9)"
+    ]
+  }
+}

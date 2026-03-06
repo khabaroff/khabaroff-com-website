@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-lora: 'Lora', serif;
+    --font-inter: 'Inter', sans-serif;
+
+    --color-primary: #2F4760;
+    --color-accent-green: #A6BDA3;
+    --color-accent-yellow: #F7D174;
+  }
+
+  * {
+    font-family: var(--font-inter);
+  }
+}

@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('posts');
+const posts = allPosts.filter(post => !post.data.draft);
+
+const allTags = posts.flatMap(post => post.data.tags);
+const uniqueTags = [...new Set(allTags)];
+
+const tagsWithCounts = uniqueTags.map(tag => ({
+  tag,
+  count: posts.filter(post => post.data.tags.includes(tag)).length
+})).sort((a, b) => b.count - a.count);
+---
+
+<BaseLayout title="Теги" description="Все теги блога">
+  <nav class="breadcrumb">
+    <a href="/">← На главную</a>
+  </nav>
+
+  <h1>Теги</h1>
+  <p class="page-description">Все статьи, организованные по тегам</p>
+
+  <div class="tags-cloud">
+    {tagsWithCounts.map(({ tag, count }) => (
+      <a
+        href={`/tags/${tag}`}
+        class="tag-item"
+        style={`font-size: ${Math.min(2, 0.9 + count * 0.1)}rem;`}
+      >
+        #{tag}
+        <span class="count">({count})</span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    padding: 2rem 0;
+  }
+
+  .breadcrumb a {
+    color: var(--color-pink);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.7;
+  }
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-description {
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+
+  .tag-item {
+    color: var(--color-pink);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+
+  .tag-item:hover {
+    background: var(--color-bg);
+    transform: scale(1.1);
+  }
+
+  .tag-item .count {
+    color: #999;
+    font-size: 0.85em;
+    margin-left: 0.25rem;
+  }
+</style>

@@ -1,17 +1,405 @@
 ---
-
+import Layout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Сергей Хабаров - практик-преподаватель">
+    <!-- Header -->
+    <header class="bg-white">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-5 flex items-center justify-between flex-wrap gap-4">
+            <div class="font-medium text-xl md:text-2xl text-black" style="font-family: 'Lora', serif">Сергей Хабаров</div>
+            <nav class="flex items-center gap-6 md:gap-10 flex-wrap">
+                <a href="#delayu" class="text-[#888888] text-[13px] hover:text-black transition-colors">Делаю</a>
+                <a href="#pishu" class="text-[#888888] text-[13px] hover:text-black transition-colors">Пишу</a>
+                <a href="#about" class="text-[#888888] text-[13px] hover:text-black transition-colors">Обо мне</a>
+                <a href="#contact" class="bg-[--color-primary] text-white text-[13px] font-medium px-6 py-2.5 rounded-3xl hover:opacity-90 transition-opacity">Написать</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-20 lg:py-25 flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-15 items-start">
+            <div class="flex-1 flex flex-col gap-8">
+                <p class="text-[#888888] text-[13px] font-medium">00 · практик-преподаватель</p>
+                <h1 class="font-medium text-4xl md:text-5xl lg:text-[64px] leading-[1.1] text-black">
+                    Изучаю проблемы,<br>
+                    которые возникают<br>
+                    у людей с технологиями
+                </h1>
+                <p class="font-lora text-xl md:text-2xl text-[#666666] leading-[1.5]">
+                    и у технологий с людьми
+                </p>
+
+                <!-- Stats Row -->
+                <div class="flex gap-8 md:gap-16 pt-8 md:pt-12 flex-wrap">
+                    <div class="flex flex-col gap-1">
+                        <div class="font-lora text-3xl md:text-5xl font-medium text-black">2000+</div>
+                        <div class="text-[#666666] text-[13px] leading-[1.5]">часов преподавания<br>и консалтинга</div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="font-lora text-3xl md:text-5xl font-medium text-black">50+</div>
+                        <div class="text-[#666666] text-[13px] leading-[1.5]">публичных воркшопов<br>и выступлений</div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="font-lora text-3xl md:text-5xl font-medium text-black">6+</div>
+                        <div class="text-[#666666] text-[13px] leading-[1.5]">лет на стыке<br>AI и образования</div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex gap-4 pt-8 flex-wrap">
+                    <a href="#contact" class="bg-[--color-primary] text-white text-[13px] font-medium px-8 py-4 rounded-[28px] hover:opacity-90 transition-opacity">
+                        → Написать
+                    </a>
+                    <a href="#about" class="border border-black text-black text-[13px] px-9 py-[18px] rounded-[28px] hover:bg-black hover:text-white transition-colors">
+                        Подробнее ↓
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="w-full lg:w-[400px] h-[300px] md:h-[400px] rounded-lg overflow-hidden flex-shrink-0">
+                <img src="/public/images/me.jpg"
+                     alt="Hero"
+                     class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Делаю Section -->
+    <section id="delayu" class="bg-[#FAFAFA]">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
+            <div class="flex flex-col gap-8 md:gap-12">
+                <div class="flex flex-col gap-4">
+                    <p class="text-[#888888] text-[13px] font-medium">01 · чем занимаюсь</p>
+                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-black">Делаю</h2>
+                </div>
+
+                <div class="flex flex-col gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Project 1 -->
+                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
+                            <div class="flex flex-col gap-2">
+                                <h3 class="font-lora text-2xl font-medium text-black">Khabaroff.Studio</h3>
+                                <p class="text-[#666666] text-lg leading-relaxed">Основатель венчурной студии. Создаём AI-решения для старта бизнеса — от чат-ботов до сложных систем автоматизации.</p>
+                            </div>
+                            <a href="https://khabaroff.studio" class="text-black font-medium text-[13px] hover:opacity-70">→ khabaroff.studio</a>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
+                            <div class="flex flex-col gap-2">
+                                <h3 class="font-lora text-2xl font-medium text-black">AI Mindset Lab и ИИЧАВО</h3>
+                                <p class="text-[#666666] text-lg leading-relaxed">Образовательный лид. Помогаю участникам лабораторий и буткемпов внедрять ИИ-инструменты в личные и рабочие процессы.</p>
+                            </div>
+                            <a href="https://aimindset.org" class="text-black font-medium text-[13px] hover:opacity-70">→ aimindset.org</a>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
+                            <div class="flex flex-col gap-2">
+                                <h3 class="font-lora text-2xl font-medium text-black">Prepod.am</h3>
+                                <p class="text-[#666666] text-lg leading-relaxed">Основатель ИИ-стартапа. Генератор академических репортов, который экономит преподавателям часы на отчётности.</p>
+                            </div>
+                            <a href="https://prepod.am" class="text-black font-medium text-[13px] hover:opacity-70">→ prepod.am</a>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="border border-[--color-accent-green] rounded-xl p-8 flex flex-col justify-between gap-2 min-h-[210px]">
+                            <div class="flex flex-col gap-2">
+                                <h3 class="font-lora text-2xl font-medium text-black">PLAI</h3>
+                                <p class="text-[#666666] text-lg leading-relaxed">Операционный лид. Разрабатываем AI-игрушку для детей, которая адаптируется под каждого ребёнка.</p>
+                            </div>
+                            <a href="https://plaicube.ai" class="text-black font-medium text-[13px] hover:opacity-70">→ plaicube.ai</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-black font-semibold text-lg hover:opacity-70 transition-opacity">→ Все проекты и портфолио</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Пишу Section -->
+    <section id="pishu" class="bg-white">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
+            <div class="flex flex-col gap-8 md:gap-12">
+                <div class="flex flex-col gap-4">
+                    <p class="text-[#888888] text-[13px] font-medium">02 · думаю вслух</p>
+                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-black">Пишу</h2>
+                </div>
+
+                <!-- Writing Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 min-h-[300px] md:min-h-[450px]">
+                    <div class="border-2 border-[--color-accent-yellow] rounded-2xl p-6 flex flex-col justify-between gap-3 bg-white">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Книга «Процессная целостность»</h3>
+                            <p class="text-[#666666] text-lg leading-relaxed">Если бы я как критик делал описание книги, то я бы сказал: «Автор книги — живое воплощение идеи непрерывного развития и адаптации». Книга похожа на лонгитюдное наблюдение за персонажем, который через жизненные ситуации копает в самопознание, профессиональный рост и личностное развитие.</p>
+                        </div>
+                        <a href="#" class="text-black font-medium text-[13px] hover:opacity-70">→ Читать</a>
+                    </div>
+
+                    <div class="border border-[--color-accent-green] rounded-2xl p-6 flex flex-col justify-between gap-3 bg-white">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Рассылка «Постпроцессная целостность»</h3>
+                            <p class="text-[#666666] text-lg leading-relaxed">Наблюдения, рефлексии и самоанализ. Построение моделей, полезные находки и советы по использованию различных тулов. Обсуждение обучения и образования для себя и других.</p>
+                        </div>
+                        <a href="https://khabaroff.substack.com" class="text-black font-medium text-[13px] hover:opacity-70">→ khabaroff.substack.com</a>
+                    </div>
+
+                    <div class="border border-[--color-accent-green] rounded-2xl p-6 flex flex-col justify-between gap-3 bg-white">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-lora text-2xl font-medium text-black">Telegram-канал</h3>
+                            <p class="text-[#666666] text-lg leading-relaxed">All I Know Is That I Don't Know Nothing — канал о развитии детей и взрослых. Название канала содержит ошибку. В этом красота формы, которая подтверждает содержание.</p>
+                        </div>
+                        <a href="#" class="text-black font-medium text-[13px] hover:opacity-70">→ Подписаться</a>
+                    </div>
+                </div>
+
+                <!-- Blog Section -->
+                <div class="border-t border-[#E5E5E5] pt-8 md:pt-12 flex flex-col gap-8">
+                    <div class="flex flex-col gap-2">
+                        <h3 class="font-lora text-2xl font-medium text-black">Блог</h3>
+                        <p class="text-[#666666] text-lg leading-[1.5]">Лонгриды на сайте — о системах, мышлении и работе.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                        <div class="flex flex-col gap-8">
+                            <h4 class="font-lora text-2xl font-medium text-black">Последние</h4>
+                            <div class="flex flex-col gap-5">
+                                <div class="flex flex-col gap-1">
+                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Новый пост о системах</a>
+                                    <p class="text-[#888888] text-[13px] leading-relaxed">Как выстроить процессы, чтобы они работали без вас</p>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Заметки о продуктивности</a>
+                                    <p class="text-[#888888] text-[13px] leading-relaxed">Почему GTD не работает и что делать вместо него</p>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Мысли об образовании</a>
+                                    <p class="text-[#888888] text-[13px] leading-relaxed">Чему нас не учат в школе, но должны бы</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-8">
+                            <h4 class="font-lora text-2xl font-medium text-black">Избранные</h4>
+                            <div class="flex flex-col gap-5">
+                                <div class="flex flex-col gap-1">
+                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Гид по философии Roam Research</a>
+                                    <p class="text-[#888888] text-[13px] leading-relaxed">Обзор приложения и принципов, которые за ним стоят — в двухчасовом видеообзоре</p>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ «Думай как математик» — как научиться учиться</a>
+                                    <p class="text-[#888888] text-[13px] leading-relaxed">10 ключевых идей книги «Думай как математик. Как решать любые задачи быстрее»</p>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <a href="/blog/" class="text-black font-medium text-lg hover:opacity-70">→ Дерек Сиверс о смысле жизни</a>
+                                    <p class="text-[#888888] text-[13px] leading-relaxed">Давайте побудем немного наивными и забудем, что решения нет</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне Section -->
+    <section id="about" class="bg-[#FAFAFA]">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
+            <div class="flex flex-col gap-6">
+                <p class="text-[#888888] text-[13px] font-medium">03 · путь</p>
+                <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-black">Обо мне</h2>
+                <p class="text-[#666666] text-base md:text-lg leading-[1.7] max-w-[700px]">
+                    За карьеру я поработал в разных индустриях — EdTech, маркетинг, медиа, HORECA, разработка — и попробовал себя в нескольких ролях, от CTO до директора по развитию.<br><br>
+                    Это дало мне навык быстро разбираться в новом и строить системы там, где их не было. Сейчас я соединяю весь этот опыт: строю системы, учу команды и пишу о том, как это работает.
+                </p>
+                <a href="#" class="text-black font-semibold text-lg hover:opacity-70 transition-opacity">→ Полная история (устанете скроллить)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форматы Section -->
+    <section class="bg-white">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
+            <div class="flex flex-col gap-8 md:gap-12">
+                <div class="flex flex-col gap-4">
+                    <p class="text-[#888888] text-[13px] font-medium">04 · форматы</p>
+                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-black">Как со мной работать</h2>
+                    <p class="text-[#666666] text-lg leading-relaxed">Есть несколько способов поработать вместе.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="border border-[#E5E5E5] rounded-[20px] p-8 flex flex-col items-center gap-4 text-center">
+                        <div class="w-14 h-14 rounded-[28px] bg-[#2F476020] flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[--color-primary]">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Диагностика</h3>
+                        <p class="text-[#666666] text-base md:text-lg leading-relaxed">
+                            Разбираю процессы и показываю, где утекает время, деньги и внимание. На выходе — карта: что автоматизировать, что оставить. Дальше можете сами или идём вместе.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="border border-[#E5E5E5] rounded-[20px] p-8 flex flex-col items-center gap-4 text-center">
+                        <div class="w-14 h-14 rounded-[28px] bg-[#A6BDA320] flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[--color-accent-green]">
+                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Моделирование процессов</h3>
+                        <p class="text-[#666666] text-base md:text-lg leading-relaxed">
+                            Беру один процесс и прорабатываю его до деталей: что, как, кто делает. На выходе — готовая схема для внедрения.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="border border-[#E5E5E5] rounded-[20px] p-8 flex flex-col items-center gap-4 text-center">
+                        <div class="w-14 h-14 rounded-[28px] bg-[#F7D17420] flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[--color-accent-yellow]">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-lora text-2xl font-medium text-[#1A1A1A]">Внедрение</h3>
+                        <p class="text-[#666666] text-base md:text-lg leading-relaxed">
+                            Настраиваю, тестирую, запускаю. Обучаю команду на их реальных задачах и остаюсь на связи 30 дней после старта.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы Section -->
+    <section class="bg-[#FAFAFA] overflow-hidden">
+        <div class="max-w-[1440px] mx-auto py-12 md:py-16 lg:py-20">
+            <div class="flex flex-col items-center gap-8 md:gap-12">
+                <div class="flex flex-col gap-4 px-4 md:px-8 lg:px-30 w-full">
+                    <p class="text-[#888888] text-[13px] font-medium">05 · говорят</p>
+                    <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl text-black">Отзывы</h2>
+                </div>
+
+                <div class="flex gap-8 justify-center px-4 overflow-x-auto pb-4 w-full">
+                    <div class="border border-[#E5E5E5] rounded-2xl p-8 flex flex-col gap-6 min-w-[320px] md:w-[400px] opacity-50">
+                        <p class="text-[#1A1A1A] text-lg leading-relaxed">
+                            «Сергей видит систему там, где я вижу хаос. За месяц разложил процессы, которые мы не могли починить год.»
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-[#E5E5E5]"></div>
+                            <div>
+                                <p class="font-medium text-[#1A1A1A] text-[13px]">Имя Фамилия</p>
+                                <p class="text-[#888888] text-[13px]">директор по операциям, компания</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-2 border-[--color-accent-green] rounded-2xl p-8 flex flex-col gap-6 min-w-[320px] md:w-[400px]">
+                        <p class="text-[#1A1A1A] text-lg leading-relaxed">
+                            «Не просто рассказал про AI — показал, как внедрить так, чтобы команда реально пользовалась.»
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-[#E5E5E5]"></div>
+                            <div>
+                                <p class="font-medium text-[#1A1A1A] text-[13px]">Имя Фамилия</p>
+                                <p class="text-[#888888] text-[13px]">руководитель отдела, компания</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border border-[#E5E5E5] rounded-2xl p-8 flex flex-col gap-6 min-w-[320px] md:w-[400px] opacity-50">
+                        <p class="text-[#1A1A1A] text-lg leading-relaxed">
+                            «Читаю канал два года. Один пост сэкономил мне неделю на автоматизации отчётов.»
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-[#E5E5E5]"></div>
+                            <div>
+                                <p class="font-medium text-[#1A1A1A] text-[13px]">Имя Фамилия</p>
+                                <p class="text-[#888888] text-[13px]">подписчик Telegram</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Dots -->
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-[#CCCCCC]"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-[--color-accent-green]"></div>
+                    <div class="w-2 h-2 rounded-full bg-[#CCCCCC]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакт Section -->
+    <section id="contact" class="bg-white">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
+            <div class="flex flex-col gap-8">
+                <h2 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-black">Связаться</h2>
+                <p class="text-[#666666] text-base md:text-lg leading-[1.7] max-w-[700px]">
+                    Консультирую по AI, автоматизации и процессам. Провожу воркшопы для команд. Выступаю в подкастах и на конференциях. Если есть задача — напишите, обсудим.
+                </p>
+                <a href="mailto:hello@khabaroff.com" class="bg-[--color-primary] text-white text-[13px] font-medium px-8 py-4 rounded-[28px] hover:opacity-90 transition-opacity inline-block w-fit">
+                    Написать →
+                </a>
+                <div class="flex flex-col gap-2">
+                    <a href="mailto:hello@khabaroff.com" class="text-[#888888] text-[13px] hover:text-black transition-colors">hello@khabaroff.com</a>
+                    <a href="https://linkedin.com/in/khabaroff" class="text-[#888888] text-[13px] hover:text-black transition-colors">linkedin.com/in/khabaroff</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A]">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-15">
+            <div class="flex flex-col gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                    <div class="flex flex-col gap-2">
+                        <div class="font-lora text-2xl font-medium text-white mb-2">Сергей Хабаров</div>
+                        <p class="text-[#666666] text-[13px] leading-relaxed">практик-преподаватель</p>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <p class="text-[#666666] text-[13px] font-semibold mb-1">Ссылки</p>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Telegram</a>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">LinkedIn</a>
+                        <a href="mailto:hello@khabaroff.com" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Email</a>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">RSS</a>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <p class="text-[#666666] text-[13px] font-semibold mb-1">Ещё</p>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Избранное</a>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Архив</a>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Гостевые посты</a>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <p class="text-[#666666] text-[13px] font-semibold mb-1">Страницы</p>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Now</a>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">CV</a>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Избранные проекты</a>
+                        <a href="#" class="text-[#AAAAAA] text-[13px] hover:text-white transition-colors">Подкасты</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-6 border-t border-[#333333]">
+                    <p class="text-[#666666] text-[13px]">2006—2026</p>
+                    <p class="text-[#666666] text-[13px]">Ереван</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</Layout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Lora', serif !important;
+  }
+  
+  .font-lora {
+    font-family: 'Lora', serif !important;
+  }
+</style>

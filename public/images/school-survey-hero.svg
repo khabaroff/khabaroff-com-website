@@ -1,0 +1,12 @@
+<svg width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#grad3)"/>
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="48" fill="white" text-anchor="middle">Опрос профессионалов</text>
+  <text x="600" y="340" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle">о школе</text>
+  <text x="600" y="390" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">Исследование связи школьных успехов и жизненных достижений</text>
+</svg>

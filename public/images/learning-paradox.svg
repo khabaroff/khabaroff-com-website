@@ -1,0 +1,8 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f8f9fa"/>
+  <circle cx="200" cy="200" r="80" fill="#e74c3c" opacity="0.8"/>
+  <circle cx="600" cy="200" r="120" fill="#3498db" opacity="0.6"/>
+  <text x="200" y="210" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Высокий IQ</text>
+  <text x="600" y="210" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Креативность</text>
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="20" fill="#2c3e50" text-anchor="middle">Парадокс успеха</text>
+</svg>

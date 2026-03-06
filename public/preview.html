@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tina Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+        .preview-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .preview-header {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .preview-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .refresh-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        .refresh-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .preview-iframe {
+            width: 100%;
+            height: calc(100vh - 120px);
+            border: none;
+            display: block;
+        }
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <div class="preview-title">👁️ Tina Preview</div>
+            <button class="refresh-btn" onclick="refreshPreview()">🔄 Обновить</button>
+        </div>
+        <div id="loading" class="loading">Загрузка превью...</div>
+        <iframe id="preview" class="preview-iframe" style="display: none;"></iframe>
+    </div>
+
+    <script>
+        let currentUrl = '';
+        
+        // Получаем URL поста из параметров
+        function getPostUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+            return slug ? `http://localhost:4444/${slug}/` : 'http://localhost:4444/';
+        }
+        
+        // Загружаем превью
+        function loadPreview() {
+            currentUrl = getPostUrl();
+            const iframe = document.getElementById('preview');
+            const loading = document.getElementById('loading');
+            
+            loading.style.display = 'flex';
+            iframe.style.display = 'none';
+            
+            iframe.onload = function() {
+                loading.style.display = 'none';
+                iframe.style.display = 'block';
+            };
+            
+            iframe.onerror = function() {
+                loading.innerHTML = '❌ Не удалось загрузить превью. Убедитесь, что сайт запущен на localhost:4444';
+            };
+            
+            iframe.src = currentUrl;
+        }
+        
+        // Обновляем превью
+        function refreshPreview() {
+            const iframe = document.getElementById('preview');
+            iframe.src = iframe.src; // Перезагружаем iframe
+        }
+        
+        // Автообновление каждые 5 секунд
+        setInterval(() => {
+            if (document.getElementById('preview').style.display !== 'none') {
+                refreshPreview();
+            }
+        }, 5000);
+        
+        // Инициализация
+        loadPreview();
+        
+        // Слушаем сообщения от родительского окна
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'refresh-preview') {
+                loadPreview();
+            }
+        });
+    </script>
+</body>
+</html>

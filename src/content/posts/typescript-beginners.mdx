@@ -1,0 +1,135 @@
+---
+title: "TypeScript для начинающих: с чего начать"
+date: 2026-01-19T11:00:00.000Z
+tags: ["typescript", "программирование", "веб-разработка"]
+category: "технологии"
+type: "гайд"
+description: "Пошаговое введение в TypeScript для тех, кто знает JavaScript"
+draft: false
+relatedPosts: ["react-19-notes", "best-ide-2026"]
+---
+
+# TypeScript для начинающих
+
+TypeScript — это JavaScript с типами. Если вы уже пишете на JS, освоить TS будет легко.
+
+## Зачем нужен TypeScript
+
+
+## Установка и настройка
+
+```bash
+# Установка TypeScript
+npm install -g typescript
+
+# Создание конфига
+tsc --init
+
+# Компиляция файла
+tsc app.ts
+```
+
+<Callout type="info">
+**Совет:** Начните с `"strict": false` в tsconfig.json, включите строгий режим позже.
+</Callout>
+
+## Основные типы
+
+```typescript
+// Примитивы
+let name: string = "Иван";
+let age: number = 25;
+let isActive: boolean = true;
+
+// Массивы
+let tags: string[] = ["js", "ts"];
+let scores: Array<number> = [1, 2, 3];
+
+// Объекты
+interface User {
+  name: string;
+  age: number;
+  email?: string; // необязательное поле
+}
+
+const user: User = {
+  name: "Иван",
+  age: 25
+};
+```
+
+## Типы функций
+
+```typescript
+// Параметры и возвращаемое значение
+function greet(name: string): string {
+  return `Привет, ${name}!`;
+}
+
+// Стрелочная функция
+const add = (a: number, b: number): number => a + b;
+
+// Функция без возврата
+function log(message: string): void {
+  console.log(message);
+}
+```
+
+## Union и Intersection
+
+```typescript
+// Union (ИЛИ)
+type Status = "active" | "inactive" | "pending";
+let status: Status = "active";
+
+// Intersection (И)
+type Admin = User & {
+  role: "admin";
+  permissions: string[];
+};
+```
+
+<Callout type="warning">
+**Частая ошибка:** Не пытайтесь типизировать всё сразу. Начните с функций и их параметров, постепенно добавляйте типы для объектов.
+</Callout>
+
+## Дженерики (Generics)
+
+```typescript
+// Универсальная функция
+function getFirst<T>(array: T[]): T | undefined {
+  return array[0];
+}
+
+const firstNumber = getFirst([1, 2, 3]); // number
+const firstString = getFirst(["a", "b"]); // string
+```
+
+## Утилитарные типы
+
+```typescript
+interface Task {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+// Partial - все поля необязательные
+type PartialTask = Partial<Task>;
+
+// Pick - выбрать только нужные поля
+type TaskPreview = Pick<Task, "title" | "completed">;
+
+// Omit - исключить поля
+type TaskWithoutDesc = Omit<Task, "description">;
+```
+
+<Callout type="success">
+**Практика:** Возьмите свой JavaScript проект и постепенно добавляйте типы. Начните с одного файла, затем расширяйте.
+</Callout>
+
+## Полезные ресурсы
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html) — официальная документация
+- [TypeScript Playground](https://www.typescriptlang.org/play) — попробуйте в браузере
+- [Type Challenges](https://github.com/type-challenges/type-challenges) — практика типов

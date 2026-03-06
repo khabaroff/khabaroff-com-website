@@ -1,0 +1,160 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getCategorySlug, getCategoryName } from '../../utils/categories';
+import Layout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  const posts = allPosts.filter(post => !post.data.draft);
+
+  const uniqueCategories = [...new Set(posts.map(post => post.data.category))];
+
+  return uniqueCategories.map(categoryRu => {
+    const categorySlug = getCategorySlug(categoryRu);
+    return {
+      params: { category: categorySlug },
+      props: {
+        categoryRu,
+        posts: posts.filter(post => post.data.category === categoryRu)
+          .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      },
+    };
+  });
+}
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+  categoryRu: string;
+}
+
+const { category } = Astro.params;
+const { posts, categoryRu } = Astro.props;
+
+const categoryName = getCategoryName(category || '');
+---
+
+<Layout title={categoryName}>
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-5 flex items-center justify-between flex-wrap gap-4">
+      <div class="font-medium text-xl md:text-2xl text-black" style="font-family: 'Lora', serif">
+        <a href="/" class="hover:opacity-70 transition-opacity">Сергей Хабаров</a>
+      </div>
+      <nav class="flex items-center gap-6 md:gap-10 flex-wrap">
+        <a href="/" class="text-[#888888] text-[13px] hover:text-black transition-colors">Главная</a>
+        <a href="/blog/" class="text-[#888888] text-[13px] hover:text-black transition-colors">Блог</a>
+        <a href="/#contact" class="bg-[--color-primary] text-white text-[13px] font-medium px-6 py-2.5 rounded-3xl hover:opacity-90 transition-opacity">Написать</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="bg-white">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-16 lg:py-20">
+      <div class="flex flex-col gap-8 md:gap-12">
+        <!-- Category Header -->
+        <div class="flex flex-col gap-4">
+          <nav class="flex items-center gap-2 text-sm">
+            <a href="/" class="text-[#888888] hover:text-black transition-colors">Главная</a>
+            <span class="text-[#888888]">/</span>
+            <a href="/blog/" class="text-[#888888] hover:text-black transition-colors">Блог</a>
+            <span class="text-[#888888]">/</span>
+            <span class="text-black font-medium">{categoryName}</span>
+          </nav>
+          
+          <div class="flex flex-col gap-2">
+            <h1 class="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-black" style="font-family: 'Lora', serif">
+              {categoryName}
+            </h1>
+            <p class="text-[#666666] text-lg">
+              {posts.length} {posts.length === 1 ? 'пост' : posts.length < 5 ? 'поста' : 'постов'} в категории
+            </p>
+          </div>
+        </div>
+
+        <!-- Posts Grid -->
+        {posts.length === 0 ? (
+          <div class="text-center py-12">
+            <p class="text-[#666666] text-lg">В этой категории пока нет постов.</p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {posts.map(post => (
+              <article class="flex flex-col gap-4 group">
+                <div class="flex flex-col gap-2">
+                  <time class="text-[#888888] text-[13px] font-medium">
+                    {post.data.date.toLocaleDateString('ru-RU', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                  
+                  <h2 class="text-2xl font-medium text-black group-hover:opacity-70 transition-opacity" style="font-family: 'Lora', serif">
+                    <a href={`/${post.slug}/`} class="block" style="font-family: inherit">
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  
+                  {post.data.description && (
+                    <p class="text-[#666666] text-base leading-relaxed line-clamp-3">
+                      {post.data.description}
+                    </p>
+                  )}
+                  
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      {post.data.tags.map(tag => (
+                        <a 
+                          href={`/tags/${tag}`} 
+                          class="inline-block bg-[#F5F5F5] px-3 py-1 rounded-full text-[#666666] text-[12px] hover:bg-[--color-accent-green] hover:text-white transition-colors"
+                        >
+                          {tag}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
+                <a 
+                  href={`/posts/${post.slug}`}
+                  class="text-black font-medium text-[13px] hover:opacity-70 transition-opacity self-start"
+                >
+                  → Читать далее
+                </a>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#1A1A1A]">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-30 py-12 md:py-15">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p class="text-[#666666] text-[13px]">2006—2026</p>
+        <p class="text-[#666666] text-[13px]">Ереван</p>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Lora', serif !important;
+  }
+  
+  .font-lora {
+    font-family: 'Lora', serif !important;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

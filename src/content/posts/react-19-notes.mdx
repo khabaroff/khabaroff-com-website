@@ -1,0 +1,77 @@
+---
+title: "Заметки о React 19: что нового"
+date: 2026-01-23T13:00:00.000Z
+tags: ["react", "frontend", "обновления"]
+category: "технологии"
+type: "заметка"
+description: "Краткий обзор ключевых изменений в React 19"
+draft: false
+relatedPosts: ["typescript-beginners", "creative-thinking"]
+---
+
+# Заметки о React 19
+
+React 19 вышел несколько месяцев назад. Вот что изменилось и стоит ли обновляться.
+
+## Главные изменения
+
+**React Compiler (Forget)**
+Наконец-то стабильная версия! Больше не нужно помнить про `useMemo` и `useCallback` для оптимизации — компилятор делает это автоматически.
+
+<Callout type="success">
+**Результат:** Код стал проще, производительность — лучше. Win-win.
+</Callout>
+
+**Actions**
+Новый паттерн для работы с формами и мутациями:
+
+```jsx
+function CommentForm() {
+  async function submitComment(formData) {
+    'use server';
+    const comment = formData.get('comment');
+    await saveComment(comment);
+  }
+
+  return (
+    <form action={submitComment}>
+      <input name="comment" />
+      <button type="submit">Отправить</button>
+    </form>
+  );
+}
+```
+
+Прощай, `useState` для loading состояний!
+
+## Что убрали
+
+- **defaultProps** — теперь используйте деструктуризацию с дефолтами
+- **Context.Provider** — просто `<Context>` теперь
+- Некоторые legacy API для классовых компонентов
+
+<Callout type="warning">
+**Внимание:** Проверьте зависимости перед обновлением. Не все библиотеки успели адаптироваться.
+</Callout>
+
+## Стоит ли обновляться?
+
+**Новый проект:** Да, однозначно.
+
+**Существующий проект:**
+- Если используете много `useMemo`/`useCallback` → да
+- Если проект маленький и стабильный → можно подождать
+- Если используете старые библиотеки → проверьте совместимость
+
+## Мой опыт
+
+Обновил один проект — миграция заняла 2 часа. Основные проблемы:
+- Замена `Context.Provider` на `Context`
+- Обновление `react-router` до v7
+- Замена `defaultProps` в нескольких компонентах
+
+**Вердикт:** Обновление того стоит. Код стал чище, перформанс лучше.
+
+<Callout type="info">
+**Совет:** Запускайте `npx codemod` — автоматически мигрирует большую часть кода.
+</Callout>

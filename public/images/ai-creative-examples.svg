@@ -1,0 +1,12 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f1f3f4"/>
+  <rect x="50" y="100" width="150" height="200" fill="#4285f4" rx="10"/>
+  <rect x="200" y="120" width="150" height="160" fill="#34a853" rx="10"/>
+  <rect x="350" y="80" width="150" height="240" fill="#fbbc04" rx="10"/>
+  <rect x="500" y="140" width="150" height="120" fill="#ea4335" rx="10"/>
+  <text x="125" y="210" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Дизайн</text>
+  <text x="275" y="210" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Текст</text>
+  <text x="425" y="210" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Музыка</text>
+  <text x="575" y="210" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Код</text>
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="18" fill="#202124" text-anchor="middle">AI в креативных процессах</text>
+</svg>
